@@ -1,6 +1,7 @@
 #include "basicZombie.h"
 basicZombie::basicZombie()
 {
+
     health=300;
     damage=40;
     pos.w=40;
@@ -8,18 +9,22 @@ basicZombie::basicZombie()
     pos.x=SCREEN_WIDTH;
     v=1;
     live=1;
-    walkTime=walkPreTime=0;
+    walkSpeed=35;
+    walkTime=preWalkTime=0;
+    biteSpeed=300;
+    isBiting=0;
+    biteTime=preBiteTime=0;
 }
 void basicZombie::move()
 {
+    if(isBiting) return;
     walkTime=SDL_GetTicks();
-    if(walkTime-walkPreTime>40)
+    if(walkTime-preWalkTime>=walkSpeed)
     {
-//        cout<<walkTime<<" "<<walkPreTime<<"\n";
         pos.y=lanePos[lane]-pos.h;
         pos.x-=v;
         if(pos.x<0) pos.x=0;
-        walkPreTime=walkTime;
+        preWalkTime=walkTime;
     }
 }
 void basicZombie::render()
@@ -45,7 +50,21 @@ void basicZombie::takeDamage(int damageTaken)
     health-=damageTaken;
     if(health<=0) live=0;
 }
-bool basicZombie::checkStatus()
+bool basicZombie::alive()
 {
     return live;
+}
+int basicZombie::bite()
+{
+    biteTime=SDL_GetTicks();
+    if(biteTime-preBiteTime>=biteSpeed)
+    {
+        preBiteTime=biteTime;
+        return damage;
+    }
+    return 0;
+}
+void basicZombie::biting(bool mask)
+{
+    isBiting=mask;
 }

@@ -9,9 +9,12 @@ class peashooter
         void spawn(int &x,int &y);
         bool fire();
         SDL_Rect getPos();
+        void takeDamage(int damageTaken);
+        bool alive();
     private:
-        double health;
-        int fireRate;
+        int health;
+        bool live;
+        int fireSpeed;
         SDL_Rect pos;
         int fireTime,preFireTime;
 };

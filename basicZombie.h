@@ -9,12 +9,16 @@ class basicZombie
         void spawn(int x=5);
         SDL_Rect getPos();
         void takeDamage(int damageTaken);
-        bool checkStatus();
+        bool alive();
+        int bite();
+        void biting(bool mask);
     private:
         int health,damage;
         double v;
         SDL_Rect pos;
         int lane;
         bool live;
-        int walkTime,walkPreTime;
+        int walkTime,preWalkTime,walkSpeed;
+        int biteTime,preBiteTime,biteSpeed;
+        bool isBiting;
 };

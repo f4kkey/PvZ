@@ -2,8 +2,9 @@
 
 peashooter::peashooter()
 {
+    live=1;
     health=300;
-    fireRate=2000;
+    fireSpeed=2500;
     pos.w=80;
     pos.h=100;
     fireTime=preFireTime=0;
@@ -24,7 +25,7 @@ SDL_Rect peashooter::getPos()
 bool peashooter::fire()
 {
     fireTime=SDL_GetTicks();
-    if(fireTime-preFireTime>=fireRate)
+    if(fireTime-preFireTime>=fireSpeed)
     {
 //        cout<<fireTime<<" "<<preFireTime<<"\n";
         preFireTime=fireTime;
@@ -32,4 +33,13 @@ bool peashooter::fire()
         return true;
     }
     return false;
+}
+void peashooter::takeDamage(int damageTaken)
+{
+    health-=damageTaken;
+    if(health<=0) live=0;
+}
+bool peashooter::alive()
+{
+    return live;
 }

@@ -2,7 +2,7 @@
 pea::pea()
 {
     pos.w=pos.h=30;
-    v=2;
+    v=6;
     live=1;
 }
 void pea::spawn(int x,int y)
