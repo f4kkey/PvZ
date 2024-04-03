@@ -13,9 +13,13 @@ void game::init()
 void game::loadResources()
 {
     b.loadTexture("resources/others/background.png");
-    tBasicZombie=loadIMG("resources/zombies/basic.png");
+    tSun=loadIMG("resources/others/sun.png");
     tPea=loadIMG("resources/others/pea.png");
+
+    tBasicZombie=loadIMG("resources/zombies/basic.png");
+
     tPeashooter=loadIMG("resources/plants/peashooter.png");
+
 }
 void game::event()
 {
@@ -23,7 +27,9 @@ void game::event()
     if(SDL_PollEvent(&e))
     {
         if(e.type==SDL_QUIT) gameState=0;
+        b.event(e);
     }
+    b.spawn();
     b.update();
 }
 bool game::getGameState()

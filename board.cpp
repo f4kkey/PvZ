@@ -19,6 +19,7 @@ void board::loadTexture(const char* s)
 }
 void board::start()
 {
+//    s.spawn();
 
     Z1.spawn(1);
     z1[1].push_back(Z1);
@@ -36,8 +37,13 @@ void board::start()
     P.spawn(pos[2][4].x,pos[2][4].y);
     p[4].push_back(P);
 }
+void board::event(SDL_Event e)
+{
+    s.event(e);
+}
 void board::update()
 {
+    s.update();
     for(int i=0;i<5;i++)
     {
         for(auto &tmp:p[i])
@@ -107,11 +113,13 @@ void board::update()
 void board::render()
 {
     SDL_RenderCopy(ren,tex,NULL,NULL);
+    s.render();
     for(int i=0;i<5;i++)
     {
         for(auto &tmp:p[i]) tmp.render();
         for(auto &tmp:z1[i]) tmp.render();
         for(auto &tmp:pe[i]) tmp.render();
+        s.render();
 
     }
 }
@@ -128,4 +136,7 @@ bool board::detechZombie(int &row,SDL_Rect position)
     }
     return false;
 }
-
+void board::spawn()
+{
+    s.spawn();
+}

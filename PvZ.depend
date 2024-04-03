@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1712064737 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
+1712109023 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
 	"all.h"
 
-1712068183 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
+1712109016 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
 	<bits/stdc++.h>
 	<SDL.h>
 	"SDL_image.h"
@@ -406,15 +406,15 @@
 	"begin_code.h"
 	"close_code.h"
 
-1712067505 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\main.cpp
+1712108044 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\main.cpp
 	"game.h"
 
-1712067476 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.h
+1712149462 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.h
 	<bits/stdc++.h>
 	"all.h"
 	"board.h"
 
-1712067494 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
+1712149879 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
 	"game.h"
 
 1711966974 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\guy.cpp
@@ -436,14 +436,15 @@
 	"all.h"
 	"pea.h"
 
-1712070298 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
+1712149895 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
 	"board.h"
 
-1712067869 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
+1712149583 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
 	"all.h"
 	"basicZombie.h"
 	"pea.h"
 	"peashooter.h"
+	"shop.h"
 
 1712051439 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
 	"zombie.h"
@@ -457,4 +458,19 @@
 
 1712066489 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\pea.h
 	"all.h"
+
+1712108520 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\mouse.cpp
+
+1712150629 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
+	"shop.h"
+
+1712149259 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.h
+	"all.h"
+	"sun.h"
+
+1712149936 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.h
+	"all.h"
+
+1712150187 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
+	"sun.h"
 

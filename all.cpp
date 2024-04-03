@@ -4,6 +4,7 @@ SDL_Renderer* ren=NULL;
 SDL_Texture *tPea=NULL;
 SDL_Texture *tBasicZombie=NULL;
 SDL_Texture *tPeashooter=NULL;
+SDL_Texture *tSun=NULL;
 SDL_Texture* loadIMG( const char* s)
 {
     SDL_Surface* tmpSurface;

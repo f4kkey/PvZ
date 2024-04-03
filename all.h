@@ -16,4 +16,5 @@ extern SDL_Renderer* ren;
 extern SDL_Texture *tPea;
 extern SDL_Texture *tBasicZombie;
 extern SDL_Texture *tPeashooter;
+extern SDL_Texture *tSun;
 
