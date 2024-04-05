@@ -5,7 +5,7 @@ peashooter::peashooter()
     price=100;
     live=1;
     health=300;
-    fireSpeed=2500;
+    fireSpeed=2000;
     pos.w=80;
     pos.h=100;
     fireTime=preFireTime=0;

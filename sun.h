@@ -4,7 +4,8 @@ class sun
 {
     public:
         sun();
-        bool spawn();
+        void spawn(int x=-1,int y=-1,int range=-1);
+        void setEndPos(int y);
         SDL_Rect getPos();
         void move();
         void render();

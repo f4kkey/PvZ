@@ -13,7 +13,18 @@ board::board()
         x+=TILE_WIDTH;
     }
     for(int row=0;row<5;row++) l[row]=new lawnmover,l[row]->setRow(row);
-
+    levelFile.open("resources/others/level.txt");
+    int curLevel=0,totalWave,wave;
+    while(!levelFile.eof())
+    {
+        levelFile>>totalWave;
+        for(int i=1;i<=totalWave;i++)
+        {
+            levelFile>>wave;
+            level[curLevel].push_back(wave);
+        }
+        curLevel++;
+    }
 }
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
@@ -103,15 +114,8 @@ void board::render()
     s.render();
 
 }
-bool board::detechZombie(int &row,SDL_Rect position)
-{
-    for(auto &tmp:z[row])
-    {
-        if(tmp->getPos().x>=position.x+position.w) return true;
-    }
-    return false;
-}
 void board::spawnSun()
 {
     s.spawn();
 }
+

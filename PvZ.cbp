@@ -63,6 +63,10 @@
 		<Unit filename="shovel.h" />
 		<Unit filename="sun.cpp" />
 		<Unit filename="sun.h" />
+		<Unit filename="sunFlower.cpp" />
+		<Unit filename="sunFlower.h" />
+		<Unit filename="wallnut.cpp" />
+		<Unit filename="wallnut.h" />
 		<Unit filename="zombie.cpp" />
 		<Unit filename="zombie.h" />
 		<Extensions />

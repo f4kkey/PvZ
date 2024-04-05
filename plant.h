@@ -26,6 +26,8 @@ class plant
         int fireTime,preFireTime;
         bool picked;
         int price;
+        int rechargeSpeed;
+        int prePlantTime,plantTime;
 
     private:
 

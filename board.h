@@ -15,9 +15,7 @@ class board
         void event(SDL_Event e);
         void update();
         void render();
-        bool detechZombie(int &row,SDL_Rect position);
         void spawnSun();
-        void spawn(plant* tmpPlant);
         static SDL_Rect pos[9][5];
         static bool exist[9][5];
         static vector<zombie*> z[5];
@@ -30,6 +28,7 @@ class board
         basicZombie* Z1;
         pea* PE;
         peashooter* P;
-
+        ifstream levelFile;
+        vector<int> level[5];
 
 };

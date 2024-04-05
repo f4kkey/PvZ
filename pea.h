@@ -13,7 +13,7 @@ class pea
     private:
         SDL_Rect pos;
         int v;
-        int damage=40;
+        int damage;
         bool live;
         int column,row;
 };

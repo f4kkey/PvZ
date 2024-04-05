@@ -24,7 +24,8 @@ void game::loadResources()
     tBasicZombie=loadIMG("resources/zombies/basic.png");
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
-
+    tSunFlower=loadIMG("resources/plants/sunflower.png");
+    tWallnut=loadIMG("resources/plants/wallnut.png");
 }
 void game::event()
 {

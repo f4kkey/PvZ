@@ -3,10 +3,10 @@
 #include "shovel.h"
 shop::shop()
 {
-    totalSun=0;
+    totalSun=50;
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
-    sunSpawnSpeed=4000;
+    sunSpawnSpeed=10000;
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*120;
@@ -18,10 +18,13 @@ shop::shop()
         seedPricePos[i].h=30;
 
     }
-    p1=new peashooter;
-    cursor=new peashooter;
+    ps=new peashooter;
+    sf=new sunFlower();
+    wn=new wallnut();
+    cursor=new peashooter();
     pickVal=-1;
 }
+vector<sun*> shop::s;
 void shop::renderText(int v,int i)
 {
     stringstream val;
@@ -66,7 +69,9 @@ void shop::event(SDL_Event e)
         if(!cursor->isPicked())
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
-            if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=p1->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=ps->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[2])&&totalSun>=sf->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new sunFlower,pickVal=2,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[3])&&totalSun>=wn->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new wallnut,pickVal=3,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[7])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=7,cursor->changePickState();
         }
         else
@@ -113,6 +118,10 @@ void shop::render()
     renderText(totalSun,0);
     SDL_RenderCopy(ren,tPeashooter,NULL,&seedPos[1]);
     renderText(100,1);
+    SDL_RenderCopy(ren,tSunFlower,NULL,&seedPos[2]);
+    renderText(50,2);
+    SDL_RenderCopy(ren,tWallnut,NULL,&seedPos[3]);
+    renderText(50,3);
     SDL_RenderCopy(ren,tShovel,NULL,&seedPos[7]);
     for(auto &tmp:s) tmp->render();
     if(cursor->isPicked())

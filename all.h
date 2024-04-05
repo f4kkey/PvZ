@@ -20,6 +20,8 @@ extern SDL_Texture *tPeashooter;
 extern SDL_Texture *tSun;
 extern SDL_Texture *tShovel;
 extern SDL_Texture *tLawnmover;
+extern SDL_Texture *tSunFlower;
+extern SDL_Texture *tWallnut;
 extern int mousePosX,mousePosY;
 extern TTF_Font *font;
 bool collision(SDL_Rect A,SDL_Rect B);

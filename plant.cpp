@@ -13,6 +13,7 @@ void plant::spawn(int i,int j)
     pos.y=board::pos[i][j].y-30;
 //    cout<<pos.x<<" "<<pos.y<<"\n";
     board::exist[i][j]=1;
+    preFireTime=SDL_GetTicks();
 }
 void plant::setPos(int x,int y)
 {

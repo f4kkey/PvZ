@@ -2,8 +2,8 @@
 #include "board.h"
 basicZombie::basicZombie()
 {
-    health=300;
-    damage=40;
+    health=180;
+    damage=50;
     pos.w=40;
     pos.h=130;
     pos.x=SCREEN_WIDTH;
@@ -12,7 +12,7 @@ basicZombie::basicZombie()
     val=1;
     walkSpeed=30;
     walkTime=preWalkTime=0;
-    biteSpeed=300;
+    biteSpeed=500;
     isBiting=0;
     biteTime=preBiteTime=0;
 }

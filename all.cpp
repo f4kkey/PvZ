@@ -4,9 +4,11 @@ SDL_Renderer* ren=NULL;
 SDL_Texture *tPea=NULL;
 SDL_Texture *tBasicZombie=NULL;
 SDL_Texture *tPeashooter=NULL;
+SDL_Texture *tSunFlower=NULL;
 SDL_Texture *tShovel=NULL;
 SDL_Texture *tSun=NULL;
 SDL_Texture *tLawnmover=NULL;
+SDL_Texture *tWallnut=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)

@@ -13,10 +13,20 @@ SDL_Rect sun::getPos()
 {
     return pos;
 }
-bool sun::spawn()
+void sun::spawn(int x,int y,int range)
 {
     srand(time(0));
-    pos.x=(rand()*123)%(SCREEN_WIDTH-100);
+    if(y==-1)
+    {
+        pos.x=(rand()*123)%(SCREEN_WIDTH-100);
+        pos.y=-pos.h;
+    }
+    else
+    {
+        pos.x=x+(rand()%range);
+        pos.y=y;
+    }
+
     endPos=(rand()*123)%(SCREEN_HEIGHT-200)+100;
 }
 void sun::render()
@@ -51,4 +61,7 @@ bool sun::alive()
 {
     return live;
 }
-
+void sun::setEndPos(int y)
+{
+    endPos=y;
+}
