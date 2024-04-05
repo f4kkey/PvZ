@@ -51,3 +51,4 @@ bool sun::alive()
 {
     return live;
 }
+

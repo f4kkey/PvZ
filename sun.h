@@ -13,7 +13,6 @@ class sun
     private:
         int value,fallSpeed;
         SDL_Rect pos;
-
         int endPos;
         int endTime,duration,curTime;
         int live;

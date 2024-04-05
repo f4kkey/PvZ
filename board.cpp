@@ -12,6 +12,8 @@ board::board()
         }
         x+=TILE_WIDTH;
     }
+    for(int row=0;row<5;row++) l[row]=new lawnmover,l[row]->setRow(row);
+
 }
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
@@ -72,6 +74,7 @@ void board::update()
         for(auto &tmp:p[i]) tmp->move();
         for(auto &tmp:z[i]) tmp->move();
         for(auto &tmp:pe[i]) tmp->move();
+        for(int row=0;row<5;row++) l[row]->move();
     }
     for(int row=0;row<5;row++)
     {
@@ -95,6 +98,7 @@ void board::render()
         for(auto &tmp:p[i]) tmp->render();
         for(auto &tmp:z[i]) tmp->render();
         for(auto &tmp:pe[i]) tmp->render();
+        for(int row=0;row<5;row++) l[row]->render();
     }
     s.render();
 

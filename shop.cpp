@@ -7,15 +7,35 @@ shop::shop()
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
     sunSpawnSpeed=4000;
-    for(int i=0;i<7;i++)
+    for(int i=0;i<8;i++)
     {
-        seedPos[i].x=(i+1)*120;
+        seedPos[i].x=(i)*120;
         seedPos[i].w=120;
-        seedPos[i].h=150;
+        seedPos[i].h=120;
+        seedPricePos[i].x=(i)*120;
+        seedPricePos[i].y=120;
+        seedPricePos[i].w=120;
+        seedPricePos[i].h=30;
+
     }
+    p1=new peashooter;
     cursor=new peashooter;
-    picked=0;
     pickVal=-1;
+}
+void shop::renderText(int v,int i)
+{
+    stringstream val;
+    val.str("");
+    val<<v;
+    SDL_Color color={0,0,0,255};
+    SDL_Surface* tmpSurface=TTF_RenderText_Blended(font,val.str().c_str(),color);
+    price=SDL_CreateTextureFromSurface(ren,tmpSurface);
+    textWidth=tmpSurface->w;
+    textHeight=tmpSurface->h;
+    SDL_FreeSurface(tmpSurface);
+
+    SDL_Rect tmp={seedPricePos[i].x+(seedPricePos[i].w-textWidth)/2,seedPricePos[i].y+(seedPricePos[i].h-textHeight)/2,textWidth,textHeight};
+    SDL_RenderCopy(ren,price,NULL,&tmp);
 }
 void shop::event(SDL_Event e)
 {
@@ -46,8 +66,8 @@ void shop::event(SDL_Event e)
         if(!cursor->isPicked())
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
-            if(inside(mousePosX,mousePosY,seedPos[0])) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=0,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[6])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=6,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=p1->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[7])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=7,cursor->changePickState();
         }
         else
         {
@@ -58,8 +78,8 @@ void shop::event(SDL_Event e)
                 {
                     if(inside(mousePosX,mousePosY,board::pos[i][j]))
                     {
-                        if(pickVal==0) placePeaShooter(i,j);
-                        if(pickVal==6) board::exist[i][j]=0;
+                        if(pickVal>=1&&pickVal<=6) placePlant(i,j);
+                        if(pickVal==7) board::exist[i][j]=0;
                     }
                 }
             }
@@ -89,24 +109,23 @@ void shop::update()
 }
 void shop::render()
 {
-    SDL_RenderCopy(ren,tPeashooter,NULL,&seedPos[0]);
-    SDL_RenderCopy(ren,tShovel,NULL,&seedPos[6]);
-    for(auto &tmp:s)
-    {
-        tmp->render();
-    }
-//    cout<<cursor->isPicked()<<"\n";
+    SDL_RenderCopy(ren,tSun,NULL,&seedPos[0]);
+    renderText(totalSun,0);
+    SDL_RenderCopy(ren,tPeashooter,NULL,&seedPos[1]);
+    renderText(100,1);
+    SDL_RenderCopy(ren,tShovel,NULL,&seedPos[7]);
+    for(auto &tmp:s) tmp->render();
     if(cursor->isPicked())
     {
-//        cout<<"lmao\n";
         SDL_GetMouseState(&mousePosX,&mousePosY);
         cursor->setPos(mousePosX-TILE_WIDTH/2,mousePosY-TILE_HEIGHT);
         cursor->render();
     }
 }
-void shop::placePeaShooter(int column,int row)
+void shop::placePlant(int column,int row)
 {
     if(board::exist[column][row]) return;
+    totalSun-=cursor->getPrice();
     cursor->spawn(column,row);
     board::p[row].push_back(cursor);
 }

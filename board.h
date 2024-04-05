@@ -4,6 +4,7 @@
 #include "pea.h"
 #include "peashooter.h"
 #include "shop.h"
+#include "lawnmover.h"
 using namespace std;
 class board
 {
@@ -23,6 +24,7 @@ class board
         static vector<pea*> pe[5];
         static vector<plant*> p[5];
     private:
+        lawnmover* l[5];
         SDL_Texture* tex;
         shop s;
         basicZombie* Z1;

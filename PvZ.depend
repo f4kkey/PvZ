@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1712285052 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
+1712303827 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
 	"all.h"
 
-1712285034 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
+1712303814 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
 	<bits/stdc++.h>
 	<SDL.h>
 	"SDL_image.h"
+	"SDL_ttf.h"
 
 1698944750 c:\users\dell\documents\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -414,7 +415,7 @@
 	"all.h"
 	"board.h"
 
-1712224133 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
+1712304926 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
 	"game.h"
 
 1711966974 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\guy.cpp
@@ -423,7 +424,7 @@
 1711966885 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\guy.h
 	"all.h"
 
-1712285171 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\basiczombie.cpp
+1712308993 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\basiczombie.cpp
 	"basicZombie.h"
 	"board.h"
 
@@ -431,7 +432,7 @@
 	"all.h"
 	"zombie.h"
 
-1712285388 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\peashooter.cpp
+1712301092 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\peashooter.cpp
 	"peashooter.h"
 	"board.h"
 
@@ -440,20 +441,21 @@
 	"pea.h"
 	"plant.h"
 
-1712285633 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
+1712304692 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
 	"board.h"
 
-1712285028 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
+1712309026 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
 	"all.h"
 	"basicZombie.h"
 	"pea.h"
 	"peashooter.h"
 	"shop.h"
+	"lawnmover.h"
 
-1712284675 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
+1712304547 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
 	"zombie.h"
 
-1712285160 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.h
+1712308505 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.h
 	"all.h"
 
 1712285731 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\pea.cpp
@@ -465,26 +467,27 @@
 
 1712108520 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\mouse.cpp
 
-1712227081 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
+1712308863 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
 	"shop.h"
 	"board.h"
 	"shovel.h"
 
-1712225424 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.h
+1712308584 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.h
 	"all.h"
 	"sun.h"
 	"plant.h"
+	"peashooter.h"
 
-1712215358 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.h
+1712301596 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.h
 	"all.h"
 
-1712215463 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
+1712301634 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
 	"sun.h"
 
-1712283325 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.h
+1712301069 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.h
 	"all.h"
 
-1712283398 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.cpp
+1712301337 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.cpp
 	"plant.h"
 	"board.h"
 
@@ -494,4 +497,16 @@
 
 1712283248 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shovel.cpp
 	"shovel.h"
+
+1705848875 c:\users\dell\documents\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1712304150 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\lawnmover.h
+	"all.h"
+
+1712305110 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\lawnmover.cpp
+	"lawnmover.h"
+	"board.h"
 

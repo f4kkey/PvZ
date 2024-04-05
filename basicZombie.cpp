@@ -9,7 +9,8 @@ basicZombie::basicZombie()
     pos.x=SCREEN_WIDTH;
     v=1;
     live=1;
-    walkSpeed=35;
+    val=1;
+    walkSpeed=30;
     walkTime=preWalkTime=0;
     biteSpeed=300;
     isBiting=0;
@@ -21,11 +22,13 @@ void basicZombie::render()
 }
 void basicZombie::move()
 {
+    bool obstacle=0;
     for(int j=0;j<board::p[row].size();j++)
     {
         plant *tmp=board::p[row][j];
         if(collision(pos,tmp->getPos()))
         {
+            obstacle=1;
             isBiting=1;
             tmp->takeDamage(bite());
             if(!tmp->alive())
@@ -38,13 +41,14 @@ void basicZombie::move()
             break;
         }
     }
+    if(!obstacle) isBiting=0;
     if(isBiting) return;
     walkTime=SDL_GetTicks();
     if(walkTime-preWalkTime>=walkSpeed)
     {
         pos.y=lanePos[row]-pos.h;
         pos.x-=v;
-        if(pos.x<0) pos.x=0;
+        if(pos.x+pos.w<0) pos.x=-pos.w;
         preWalkTime=walkTime;
     }
 }

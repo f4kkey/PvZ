@@ -6,6 +6,8 @@ SDL_Texture *tBasicZombie=NULL;
 SDL_Texture *tPeashooter=NULL;
 SDL_Texture *tShovel=NULL;
 SDL_Texture *tSun=NULL;
+SDL_Texture *tLawnmover=NULL;
+TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)
 {
@@ -26,3 +28,4 @@ bool collision(SDL_Rect A,SDL_Rect B)
     if(A.x>B.x+B.w||A.x+A.w<B.x||A.y+A.h<B.y||B.y+B.h<A.y) return false;
     return true;
 }
+

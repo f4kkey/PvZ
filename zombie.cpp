@@ -1,18 +1,7 @@
 #include "zombie.h"
 zombie::zombie()
 {
-    health=300;
-    damage=40;
-    pos.w=40;
-    pos.h=130;
-    pos.x=SCREEN_WIDTH;
-    v=1;
-    live=1;
-    walkSpeed=35;
-    walkTime=preWalkTime=0;
-    biteSpeed=300;
-    isBiting=0;
-    biteTime=preBiteTime=0;
+
 }
 SDL_Rect zombie::getPos()
 {

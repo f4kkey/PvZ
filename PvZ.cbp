@@ -48,6 +48,8 @@
 		<Unit filename="board.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
+		<Unit filename="lawnmover.cpp" />
+		<Unit filename="lawnmover.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="pea.cpp" />
 		<Unit filename="pea.h" />

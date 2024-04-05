@@ -16,6 +16,7 @@ class plant
         void setPos(int x,int y);
         int getColumn();
         int getRow();
+        int getPrice();
     protected:
         int health;
         bool live;
@@ -24,6 +25,7 @@ class plant
         int column,row;
         int fireTime,preFireTime;
         bool picked;
+        int price;
 
     private:
 

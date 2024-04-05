@@ -58,3 +58,7 @@ void plant::changePickState()
 {
     picked=1-picked;
 }
+int plant::getPrice()
+{
+    return price;
+}

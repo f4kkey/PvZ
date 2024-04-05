@@ -22,6 +22,7 @@ class zombie
         int walkTime,preWalkTime,walkSpeed;
         int biteTime,preBiteTime,biteSpeed;
         bool isBiting;
+        int val;
     private:
 
 

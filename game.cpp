@@ -9,12 +9,16 @@ void game::init()
     SDL_Init(SDL_INIT_EVERYTHING);
     window=SDL_CreateWindow("PvZ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SCREEN_WIDTH,SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
+    TTF_Init();
 }
 void game::loadResources()
 {
+    font=TTF_OpenFont("resources/others/font.ttf",25);
     b.loadTexture("resources/others/background.png");
     tSun=loadIMG("resources/others/sun.png");
     tShovel=loadIMG("resources/others/shovel.png");
+    tLawnmover=loadIMG("resources/others/lawnmover.png");
+//    if(tLawnmover==NULL) cout<<"lmao\n";
     tPea=loadIMG("resources/others/pea.png");
 
     tBasicZombie=loadIMG("resources/zombies/basic.png");
@@ -24,6 +28,12 @@ void game::loadResources()
 }
 void game::event()
 {
+    time=SDL_GetTicks();
+    if(time-pretime<=20)
+    {
+        SDL_Delay(20-(time-pretime));
+        pretime=time;
+    }
     time=SDL_GetTicks();
     if(SDL_PollEvent(&e))
     {

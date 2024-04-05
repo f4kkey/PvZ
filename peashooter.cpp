@@ -2,6 +2,7 @@
 #include "board.h"
 peashooter::peashooter()
 {
+    price=100;
     live=1;
     health=300;
     fireSpeed=2500;
