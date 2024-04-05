@@ -9,9 +9,11 @@ class pea
         void render();
         SDL_Rect getPos();
         int getDamage();
+        bool alive();
     private:
         SDL_Rect pos;
         int v;
         int damage=40;
         bool live;
+        int column,row;
 };

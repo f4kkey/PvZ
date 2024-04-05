@@ -1,7 +1,7 @@
 #include "basicZombie.h"
+#include "board.h"
 basicZombie::basicZombie()
 {
-
     health=300;
     damage=40;
     pos.w=40;
@@ -15,56 +15,36 @@ basicZombie::basicZombie()
     isBiting=0;
     biteTime=preBiteTime=0;
 }
-void basicZombie::move()
-{
-    if(isBiting) return;
-    walkTime=SDL_GetTicks();
-    if(walkTime-preWalkTime>=walkSpeed)
-    {
-        pos.y=lanePos[lane]-pos.h;
-        pos.x-=v;
-        if(pos.x<0) pos.x=0;
-        preWalkTime=walkTime;
-    }
-}
 void basicZombie::render()
 {
     SDL_RenderCopy(ren,tBasicZombie,NULL,&pos);
 }
-void basicZombie::spawn(int x)
+void basicZombie::move()
 {
-    if(x==5)
+    for(int j=0;j<board::p[row].size();j++)
     {
-        srand(time(0));
-        lane=rand()%5;
+        plant *tmp=board::p[row][j];
+        if(collision(pos,tmp->getPos()))
+        {
+            isBiting=1;
+            tmp->takeDamage(bite());
+            if(!tmp->alive())
+            {
+                board::exist[tmp->getColumn()][row]=0;
+                delete tmp;
+                board::p[row].erase(board::p[row].begin()+j);
+                isBiting=0;
+            }
+            break;
+        }
     }
-    else lane=x;
-
-}
-SDL_Rect basicZombie::getPos()
-{
-    return pos;
-}
-void basicZombie::takeDamage(int damageTaken)
-{
-    health-=damageTaken;
-    if(health<=0) live=0;
-}
-bool basicZombie::alive()
-{
-    return live;
-}
-int basicZombie::bite()
-{
-    biteTime=SDL_GetTicks();
-    if(biteTime-preBiteTime>=biteSpeed)
+    if(isBiting) return;
+    walkTime=SDL_GetTicks();
+    if(walkTime-preWalkTime>=walkSpeed)
     {
-        preBiteTime=biteTime;
-        return damage;
+        pos.y=lanePos[row]-pos.h;
+        pos.x-=v;
+        if(pos.x<0) pos.x=0;
+        preWalkTime=walkTime;
     }
-    return 0;
-}
-void basicZombie::biting(bool mask)
-{
-    isBiting=mask;
 }

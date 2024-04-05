@@ -1,13 +1,10 @@
 #pragma once
 #include "all.h"
-#include "pea.h"
 #include "plant.h"
-class peashooter:public plant
+class shovel:public plant
 {
     public:
-        peashooter();
+        shovel();
         void render();
         void move();
-    private:
-        pea *bullet;
 };

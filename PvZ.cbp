@@ -49,16 +49,20 @@
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="mouse.cpp" />
-		<Unit filename="mouse.h" />
 		<Unit filename="pea.cpp" />
 		<Unit filename="pea.h" />
 		<Unit filename="peashooter.cpp" />
 		<Unit filename="peashooter.h" />
+		<Unit filename="plant.cpp" />
+		<Unit filename="plant.h" />
 		<Unit filename="shop.cpp" />
 		<Unit filename="shop.h" />
+		<Unit filename="shovel.cpp" />
+		<Unit filename="shovel.h" />
 		<Unit filename="sun.cpp" />
 		<Unit filename="sun.h" />
+		<Unit filename="zombie.cpp" />
+		<Unit filename="zombie.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

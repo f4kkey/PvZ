@@ -4,7 +4,9 @@ SDL_Renderer* ren=NULL;
 SDL_Texture *tPea=NULL;
 SDL_Texture *tBasicZombie=NULL;
 SDL_Texture *tPeashooter=NULL;
+SDL_Texture *tShovel=NULL;
 SDL_Texture *tSun=NULL;
+int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)
 {
     SDL_Surface* tmpSurface;
@@ -14,4 +16,13 @@ SDL_Texture* loadIMG( const char* s)
     SDL_FreeSurface(tmpSurface);
     return tex;
 }
-
+bool inside(int x,int y,SDL_Rect rect)
+{
+    if(x>=rect.x&&x<=rect.x+rect.w&&y>=rect.y&&y<=rect.y+rect.h) return 1;
+    return 0;
+}
+bool collision(SDL_Rect A,SDL_Rect B)
+{
+    if(A.x>B.x+B.w||A.x+A.w<B.x||A.y+A.h<B.y||B.y+B.h<A.y) return false;
+    return true;
+}

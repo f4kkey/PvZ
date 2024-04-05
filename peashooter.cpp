@@ -1,5 +1,5 @@
 #include "peashooter.h"
-
+#include "board.h"
 peashooter::peashooter()
 {
     live=1;
@@ -13,33 +13,23 @@ void peashooter::render()
 {
     SDL_RenderCopy(ren,tPeashooter,NULL,&pos);
 }
-void peashooter::spawn(int &x,int &y)
+void peashooter::move()
 {
-    pos.x=x+30;
-    pos.y=y-30;
-}
-SDL_Rect peashooter::getPos()
-{
-    return pos;
-}
-bool peashooter::fire()
-{
-    fireTime=SDL_GetTicks();
-    if(fireTime-preFireTime>=fireSpeed)
+    for(auto &tmp:board::z[row])
     {
-//        cout<<fireTime<<" "<<preFireTime<<"\n";
-        preFireTime=fireTime;
-//        cout<<" "<<fireTime<<" "<<preFireTime<<"\n";
-        return true;
+        SDL_Rect zomPos=tmp->getPos();
+        if(pos.x+pos.w<=zomPos.x)
+        {
+            fireTime=SDL_GetTicks();
+            if(fireTime-preFireTime>=fireSpeed)
+            {
+                preFireTime=fireTime;
+                bullet=new pea;
+                bullet->spawn(column,row);
+                board::pe[row].push_back(bullet);
+                break;
+            }
+
+        }
     }
-    return false;
-}
-void peashooter::takeDamage(int damageTaken)
-{
-    health-=damageTaken;
-    if(health<=0) live=0;
-}
-bool peashooter::alive()
-{
-    return live;
 }

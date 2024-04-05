@@ -7,12 +7,17 @@ board::board()
         int y=250;
         for(int j=0;j<5;j++)
         {
-            pos[i][j]={x,y};
+            pos[i][j]={x,y,120,100};
             y+=TILE_HEIGHT;
         }
         x+=TILE_WIDTH;
     }
 }
+SDL_Rect board::pos[9][5];
+bool board::exist[9][5];
+vector<zombie*> board::z[5];
+vector<plant*> board::p[5];
+vector<pea*> board::pe[5];
 void board::loadTexture(const char* s)
 {
     tex=loadIMG(s);
@@ -20,21 +25,27 @@ void board::loadTexture(const char* s)
 void board::start()
 {
 //    s.spawn();
+    Z1= new basicZombie;
+    Z1->spawn(1);
+    z[1].push_back(Z1);
+    Z1= new basicZombie;
+    Z1->spawn(2);
+    z[2].push_back(Z1);
+    Z1= new basicZombie;
+    Z1->spawn(4);
+    z[4].push_back(Z1);
 
-    Z1.spawn(1);
-    z1[1].push_back(Z1);
-    Z1.spawn(2);
-    z1[2].push_back(Z1);
-    Z1.spawn(4);
-    z1[4].push_back(Z1);
-
-    P.spawn(pos[0][2].x,pos[0][2].y);
+    P=new peashooter;
+    P->spawn(0,2);
     p[2].push_back(P);
-    P.spawn(pos[8][1].x,pos[8][1].y);
+    P=new peashooter;
+    P->spawn(8,1);
     p[1].push_back(P);
-    P.spawn(pos[7][1].x,pos[7][1].y);
+    P=new peashooter;
+    P->spawn(7,1);
     p[1].push_back(P);
-    P.spawn(pos[2][4].x,pos[2][4].y);
+    P=new peashooter;
+    P->spawn(2,4);
     p[4].push_back(P);
 }
 void board::event(SDL_Event e)
@@ -44,68 +55,34 @@ void board::event(SDL_Event e)
 void board::update()
 {
     s.update();
-    for(int i=0;i<5;i++)
+    for(int row=0;row<5;row++)
     {
-        for(auto &tmp:p[i])
+        for(int i=0;i<p[row].size();i++)
         {
-            SDL_Rect position=tmp.getPos();
-            if(tmp.fire())
+            plant *tmp=p[row][i];
+            if(!exist[tmp->getColumn()][row])
             {
-                if(detechZombie(i,position))
-               {
-                    PE.spawn(position.x+position.w,position.y+20);
-                    pe[i].push_back(PE);
-               }
+                delete tmp;
+                p[row].erase(p[row].begin()+i);
             }
         }
     }
     for(int i=0;i<5;i++)
     {
-        for(auto &tmp:z1[i]) tmp.move();
-        for(auto &tmp:pe[i]) tmp.move();
+        for(auto &tmp:p[i]) tmp->move();
+        for(auto &tmp:z[i]) tmp->move();
+        for(auto &tmp:pe[i]) tmp->move();
     }
     for(int row=0;row<5;row++)
     {
         for(int i=0;i<pe[row].size();i++)
         {
-            for(int j=0;j<z1[row].size();j++)
+            pea *tmp=pe[row][i];
+            if(!tmp->alive())
             {
-                pea &t1=pe[row][i];
-                basicZombie &t2=z1[row][j];
-                if(collision(t1.getPos(),t2.getPos()))
-                {
-                    t2.takeDamage(t1.getDamage());
-                    pe[row].erase(pe[row].begin()+i);
-                    i--;
-                    if(!t2.alive())
-                    {
-                        z1[row].erase(z1[row].begin()+j);
-                    }
-                    break;
-                }
-            }
-        }
-    }
-    for(int row=0;row<5;row++)
-    {
-        for(int i=0;i<z1[row].size();i++)
-        {
-            for(int j=0;j<p[row].size();j++)
-            {
-                basicZombie &t1=z1[row][i];
-                peashooter &t2=p[row][j];
-                if(collision(t1.getPos(),t2.getPos()))
-                {
-                    t1.biting(1);
-                    t2.takeDamage(t1.bite());
-                    if(!t2.alive())
-                    {
-                        p[row].erase(p[row].begin()+j);
-                        t1.biting(0);
-                    }
-
-                    break;
-                }
+                pe[row].erase(pe[row].begin()+i);
+                i--;
+                delete tmp;
             }
         }
     }
@@ -113,30 +90,24 @@ void board::update()
 void board::render()
 {
     SDL_RenderCopy(ren,tex,NULL,NULL);
-    s.render();
     for(int i=0;i<5;i++)
     {
-        for(auto &tmp:p[i]) tmp.render();
-        for(auto &tmp:z1[i]) tmp.render();
-        for(auto &tmp:pe[i]) tmp.render();
-        s.render();
-
+        for(auto &tmp:p[i]) tmp->render();
+        for(auto &tmp:z[i]) tmp->render();
+        for(auto &tmp:pe[i]) tmp->render();
     }
-}
-bool board::collision(SDL_Rect A,SDL_Rect B)
-{
-    if(A.x>B.x+B.w||A.x+A.w<B.x||A.y+A.h<B.y||B.y+B.h<A.y) return false;
-    return true;
+    s.render();
+
 }
 bool board::detechZombie(int &row,SDL_Rect position)
 {
-    for(auto &tmp:z1[row])
+    for(auto &tmp:z[row])
     {
-        if(tmp.getPos().x>=position.x+position.w) return true;
+        if(tmp->getPos().x>=position.x+position.w) return true;
     }
     return false;
 }
-void board::spawn()
+void board::spawnSun()
 {
     s.spawn();
 }
