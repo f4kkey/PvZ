@@ -28,6 +28,7 @@ class plant
         int price;
         int rechargeSpeed;
         int prePlantTime,plantTime;
+        int damage;
 
     private:
 

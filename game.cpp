@@ -18,7 +18,6 @@ void game::loadResources()
     tSun=loadIMG("resources/others/sun.png");
     tShovel=loadIMG("resources/others/shovel.png");
     tLawnmover=loadIMG("resources/others/lawnmover.png");
-//    if(tLawnmover==NULL) cout<<"lmao\n";
     tPea=loadIMG("resources/others/pea.png");
 
     tBasicZombie=loadIMG("resources/zombies/basic.png");
@@ -26,6 +25,7 @@ void game::loadResources()
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");
     tWallnut=loadIMG("resources/plants/wallnut.png");
+    tCherryBomb=loadIMG("resources/plants/cherrybomb.png");
 }
 void game::event()
 {

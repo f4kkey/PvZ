@@ -41,6 +41,7 @@ int sun::event(SDL_Event e)
         SDL_GetMouseState(&x,&y);
         if(x>=pos.x&&x<=pos.x+pos.w&&y>=pos.y&&y<=pos.y+pos.h)
         {
+            live=0;
             return value;
         }
     }

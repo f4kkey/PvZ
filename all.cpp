@@ -9,6 +9,7 @@ SDL_Texture *tShovel=NULL;
 SDL_Texture *tSun=NULL;
 SDL_Texture *tLawnmover=NULL;
 SDL_Texture *tWallnut=NULL;
+SDL_Texture *tCherryBomb=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)

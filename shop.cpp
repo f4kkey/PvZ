@@ -3,10 +3,10 @@
 #include "shovel.h"
 shop::shop()
 {
-    totalSun=50;
+    totalSun=150;
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
-    sunSpawnSpeed=10000;
+    sunSpawnSpeed=3000;
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*120;
@@ -21,6 +21,7 @@ shop::shop()
     ps=new peashooter;
     sf=new sunFlower();
     wn=new wallnut();
+    cb=new cherryBomb();
     cursor=new peashooter();
     pickVal=-1;
 }
@@ -45,23 +46,13 @@ void shop::event(SDL_Event e)
     for(int i=0;i<s.size();i++)
     {
         sun *tmp=s[i];
+        int val=s[i]->event(e);
+        if(val) totalSun+=val;
         if(!tmp->alive())
         {
             s.erase(s.begin()+i);
             delete tmp;
             i--;
-        }
-    }
-    for(int i=0;i<s.size();i++)
-    {
-        sun *tmp=s[i];
-        int val=s[i]->event(e);
-        if(val)
-        {
-            totalSun+=val;
-            s.erase(s.begin()+i);
-            delete tmp;
-            break;
         }
     }
     if(e.type==SDL_MOUSEBUTTONDOWN)
@@ -72,6 +63,7 @@ void shop::event(SDL_Event e)
             if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=ps->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[2])&&totalSun>=sf->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new sunFlower,pickVal=2,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[3])&&totalSun>=wn->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new wallnut,pickVal=3,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[4])&&totalSun>=cb->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new cherryBomb,pickVal=4,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[7])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=7,cursor->changePickState();
         }
         else
@@ -122,6 +114,8 @@ void shop::render()
     renderText(50,2);
     SDL_RenderCopy(ren,tWallnut,NULL,&seedPos[3]);
     renderText(50,3);
+    SDL_RenderCopy(ren,tCherryBomb,NULL,&seedPos[4]);
+    renderText(150,4);
     SDL_RenderCopy(ren,tShovel,NULL,&seedPos[7]);
     for(auto &tmp:s) tmp->render();
     if(cursor->isPicked())
