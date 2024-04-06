@@ -1,8 +1,8 @@
 #include "basicZombie.h"
 #include "board.h"
-basicZombie::basicZombie()
+coneZombie::coneZombie()
 {
-    health=180;
+    health=550;
     damage=50;
     pos.w=60;
     pos.h=150;
@@ -16,11 +16,11 @@ basicZombie::basicZombie()
     isBiting=0;
     biteTime=preBiteTime=0;
 }
-void basicZombie::render()
+void coneZombie::render()
 {
-    SDL_RenderCopy(ren,tBasicZombie,NULL,&pos);
+    SDL_RenderCopy(ren,tConeZombie,NULL,&pos);
 }
-void basicZombie::move()
+void coneZombie::move()
 {
     bool obstacle=0;
     for(int j=0;j<board::p[row].size();j++)

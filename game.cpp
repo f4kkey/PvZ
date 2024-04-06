@@ -20,12 +20,16 @@ void game::loadResources()
     tLawnmover=loadIMG("resources/others/lawnmover.png");
     tPea=loadIMG("resources/others/pea.png");
 
-    tBasicZombie=loadIMG("resources/zombies/basic.png");
-
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");
     tWallnut=loadIMG("resources/plants/wallnut.png");
     tCherryBomb=loadIMG("resources/plants/cherrybomb.png");
+    tPotatoMine=loadIMG("resources/plants/potatomine.png");
+    tRepeater=loadIMG("resources/plants/repeater.png");
+
+
+    tBasicZombie=loadIMG("resources/zombies/basic.png");
+    tConeZombie=loadIMG("resources/zombies/cone.png");
 }
 void game::event()
 {

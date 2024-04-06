@@ -6,6 +6,8 @@
 #include "sunFlower.h"
 #include "wallnut.h"
 #include "cherryBomb.h"
+#include "potatoMine.h"
+#include "repeater.h"
 class shop
 {
     public:
@@ -31,6 +33,8 @@ class shop
         sunFlower* sf;
         wallnut* wn;
         cherryBomb* cb;
+        potatoMine* pm;
+        repeater* rp;
         SDL_Texture *price;
         int textWidth,textHeight;
 };

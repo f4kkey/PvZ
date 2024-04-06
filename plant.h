@@ -27,8 +27,8 @@ class plant
         bool picked;
         int price;
         int rechargeSpeed;
-        int prePlantTime,plantTime;
         int damage;
+        SDL_Rect sprite;
 
     private:
 

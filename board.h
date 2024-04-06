@@ -1,7 +1,10 @@
 #pragma once
 #include "all.h"
+#include "zombie.h"
 #include "basicZombie.h"
+#include "coneZombie.h"
 #include "pea.h"
+#include "plant.h"
 #include "peashooter.h"
 #include "shop.h"
 #include "lawnmover.h"
@@ -26,6 +29,7 @@ class board
         SDL_Texture* tex;
         shop s;
         basicZombie* Z1;
+        coneZombie* Z2;
         pea* PE;
         peashooter* P;
         ifstream levelFile;

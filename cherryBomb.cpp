@@ -38,7 +38,6 @@ void cherryBomb::move()
                     delete tmp;
                     board::z[row].erase(board::z[row].begin()+j);
                 }
-                break;
             }
         }
         if(row>0)
@@ -54,7 +53,6 @@ void cherryBomb::move()
                     delete tmp;
                     board::z[row-1].erase(board::z[row-1].begin()+j);
                 }
-                break;
             }
         }
         if(row<4)
@@ -70,7 +68,6 @@ void cherryBomb::move()
                     delete tmp;
                     board::z[row+1].erase(board::z[row+1].begin()+j);
                 }
-                break;
             }
         }
     }

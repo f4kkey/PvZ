@@ -5,7 +5,7 @@ sunFlower::sunFlower()
     price=50;
     live=1;
     health=300;
-    fireSpeed=15000;
+    fireSpeed=8000;
     pos.w=80;
     pos.h=100;
     fireTime=preFireTime=0;

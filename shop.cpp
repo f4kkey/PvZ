@@ -3,10 +3,10 @@
 #include "shovel.h"
 shop::shop()
 {
-    totalSun=150;
+    totalSun=50;
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
-    sunSpawnSpeed=3000;
+    sunSpawnSpeed=8000;
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*120;
@@ -22,6 +22,8 @@ shop::shop()
     sf=new sunFlower();
     wn=new wallnut();
     cb=new cherryBomb();
+    pm=new potatoMine();
+    rp=new repeater();
     cursor=new peashooter();
     pickVal=-1;
 }
@@ -57,26 +59,31 @@ void shop::event(SDL_Event e)
     }
     if(e.type==SDL_MOUSEBUTTONDOWN)
     {
-        if(!cursor->isPicked())
+        if(!cursor->isPicked() )
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
             if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=ps->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[2])&&totalSun>=sf->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new sunFlower,pickVal=2,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[3])&&totalSun>=wn->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new wallnut,pickVal=3,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[4])&&totalSun>=cb->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new cherryBomb,pickVal=4,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[5])&&totalSun>=pm->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new potatoMine,pickVal=5,cursor->changePickState();
+            if(inside(mousePosX,mousePosY,seedPos[6])&&totalSun>=rp->getPrice()) SDL_ShowCursor(SDL_DISABLE),cursor=new repeater,pickVal=6,cursor->changePickState();
             if(inside(mousePosX,mousePosY,seedPos[7])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=7,cursor->changePickState();
         }
         else
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
-            for(int i=0;i<9;i++)
+            if(e.button.button==SDL_BUTTON_LEFT)
             {
-                for(int j=0;j<5;j++)
+                for(int i=0;i<9;i++)
                 {
-                    if(inside(mousePosX,mousePosY,board::pos[i][j]))
+                    for(int j=0;j<5;j++)
                     {
-                        if(pickVal>=1&&pickVal<=6) placePlant(i,j);
-                        if(pickVal==7) board::exist[i][j]=0;
+                        if(inside(mousePosX,mousePosY,board::pos[i][j]))
+                        {
+                            if(pickVal>=1&&pickVal<=6) placePlant(i,j);
+                            if(pickVal==7) board::exist[i][j]=0;
+                        }
                     }
                 }
             }
@@ -116,12 +123,16 @@ void shop::render()
     renderText(50,3);
     SDL_RenderCopy(ren,tCherryBomb,NULL,&seedPos[4]);
     renderText(150,4);
+    SDL_RenderCopy(ren,tPotatoMine,NULL,&seedPos[5]);
+    renderText(25,5);
+    SDL_RenderCopy(ren,tRepeater,NULL,&seedPos[6]);
+    renderText(200,6);
     SDL_RenderCopy(ren,tShovel,NULL,&seedPos[7]);
     for(auto &tmp:s) tmp->render();
     if(cursor->isPicked())
     {
         SDL_GetMouseState(&mousePosX,&mousePosY);
-        cursor->setPos(mousePosX-TILE_WIDTH/2,mousePosY-TILE_HEIGHT);
+        cursor->setPos(mousePosX-TILE_WIDTH/3,mousePosY-TILE_HEIGHT/2);
         cursor->render();
     }
 }

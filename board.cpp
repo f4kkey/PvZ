@@ -41,9 +41,9 @@ void board::start()
     Z1= new basicZombie;
     Z1->spawn(1);
     z[1].push_back(Z1);
-    Z1= new basicZombie;
-    Z1->spawn(2);
-    z[2].push_back(Z1);
+    Z2= new coneZombie;
+    Z2->spawn(2);
+    z[2].push_back(Z2);
     Z1= new basicZombie;
     Z1->spawn(4);
     z[4].push_back(Z1);

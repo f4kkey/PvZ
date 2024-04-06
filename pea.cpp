@@ -20,7 +20,9 @@ void pea::move()
     for(int j=0;j<board::z[row].size();j++)
     {
         zombie *tmp=board::z[row][j];
-        if(collision(pos,tmp->getPos()))
+        SDL_Rect tmpPos=pos;
+        tmpPos.x-=20;
+        if(collision(tmpPos,tmp->getPos()))
         {
             tmp->takeDamage(damage);
             live=0;
