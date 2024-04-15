@@ -1,6 +1,7 @@
 #include "game.h"
 game::game()
 {
+    pause=0;
     gameState=1;
     time=pretime=0;
 }
@@ -8,6 +9,7 @@ void game::init()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     window=SDL_CreateWindow("PvZ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SCREEN_WIDTH,SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
+//    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
 }
@@ -19,6 +21,10 @@ void game::loadResources()
     tShovel=loadIMG("resources/others/shovel.png");
     tLawnmover=loadIMG("resources/others/lawnmover.png");
     tPea=loadIMG("resources/others/pea.png");
+    tBlank=loadIMG("resources/others/blank.png");
+    SDL_SetTextureBlendMode(tBlank,SDL_BLENDMODE_BLEND);
+    SDL_SetTextureAlphaMod(tBlank,127);
+    tFinalWave=loadIMG("resources/others/finalwave.png");
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");
@@ -27,9 +33,13 @@ void game::loadResources()
     tPotatoMine=loadIMG("resources/plants/potatomine.png");
     tRepeater=loadIMG("resources/plants/repeater.png");
 
-
-    tBasicZombie=loadIMG("resources/zombies/basic.png");
-    tConeZombie=loadIMG("resources/zombies/cone.png");
+    tBody=loadIMG("resources/zombies/body.png");
+    tBackLeg=loadIMG("resources/zombies/backleg.png");
+    tFrontLeg=loadIMG("resources/zombies/frontleg.png");
+    tBackHand=loadIMG("resources/zombies/backhand.png");
+    tFrontHand=loadIMG("resources/zombies/fronthand.png");
+    tCone=loadIMG("resources/zombies/cone.png");
+    tBucket=loadIMG("resources/zombies/bucket.png");
 }
 void game::event()
 {
@@ -43,9 +53,19 @@ void game::event()
     if(SDL_PollEvent(&e))
     {
         if(e.type==SDL_QUIT) gameState=0;
-        b.event(e);
+        if(e.type==SDL_MOUSEBUTTONDOWN)
+        {
+            int x,y;
+            SDL_GetMouseState(&x,&y);
+            if(x>=SCREEN_WIDTH-100&&x<=SCREEN_WIDTH&&y<=100&&y>=0)
+            {
+                pause=1-pause;
+            }
+            if(!pause) b.event(e);
+        }
     }
-    b.spawnSun();
+    if(pause) return;
+    b.levelProgess(0);
     b.update();
 }
 bool game::getGameState()

@@ -8,4 +8,5 @@ class wallnut:public plant
         void render();
         void move();
     private:
+        SDL_Rect sprite[3];
 };

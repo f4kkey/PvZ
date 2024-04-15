@@ -5,14 +5,24 @@ peashooter::peashooter()
     price=100;
     live=1;
     health=300;
-    fireSpeed=2000;
-    pos.w=80;
-    pos.h=100;
+    fireSpeed=1425;
+    pos.w=100;
+    pos.h=120;
+    recharge=5000;
     fireTime=preFireTime=0;
 }
 void peashooter::render()
 {
     SDL_RenderCopy(ren,tPeashooter,NULL,&pos);
+    if(!column&&!picked)
+    {
+        if(SDL_GetTicks()-prePlantTime<recharge)
+        {
+            rechargeRect=pos;
+            rechargeRect.h=pos.h*(recharge-SDL_GetTicks()+prePlantTime)/recharge;
+            SDL_RenderCopy(ren,tBlank,NULL,&rechargeRect);
+        }
+    }
 }
 void peashooter::move()
 {

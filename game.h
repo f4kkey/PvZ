@@ -15,8 +15,8 @@ class game
 
     private:
         int time,pretime;
-        bool gameState=1;
+        bool pause;
+        bool gameState;
         SDL_Event e;
         board b;
-        int cnt=0;
 };

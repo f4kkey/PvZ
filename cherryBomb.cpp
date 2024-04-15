@@ -5,15 +5,25 @@ cherryBomb::cherryBomb()
     price=150;
     live=1;
     health=999999999;
-    pos.w=80;
-    pos.h=100;
+    pos.w=100;
+    pos.h=120;
     fireSpeed=1000;
     fireTime=preFireTime=0;
     damage=1800;
+    recharge=15000;
 }
 void cherryBomb::render()
 {
     SDL_RenderCopy(ren,tCherryBomb,NULL,&pos);
+    if(!column&&!picked)
+    {
+        if(SDL_GetTicks()-prePlantTime<recharge)
+        {
+            rechargeRect=pos;
+            rechargeRect.h=pos.h*(recharge-SDL_GetTicks()+prePlantTime)/recharge;
+            SDL_RenderCopy(ren,tBlank,NULL,&rechargeRect);
+        }
+    }
 }
 void cherryBomb::move()
 {

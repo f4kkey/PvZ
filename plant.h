@@ -13,10 +13,12 @@ class plant
         bool alive();
         bool isPicked();
         void changePickState();
-        void setPos(int x,int y);
+        void setPos(int x,int y,int w,int h);
         int getColumn();
         int getRow();
         int getPrice();
+        bool plantable();
+        void setPlantTime(int x);
     protected:
         int health;
         bool live;
@@ -24,11 +26,13 @@ class plant
         SDL_Rect pos;
         int column,row;
         int fireTime,preFireTime;
+        int prePlantTime;
         bool picked;
         int price;
-        int rechargeSpeed;
+        int recharge;
         int damage;
         SDL_Rect sprite;
+        SDL_Rect rechargeRect;
 
     private:
 

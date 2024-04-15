@@ -25,6 +25,9 @@ board::board()
         }
         curLevel++;
     }
+    preWave=0;
+    curWave=0;
+    finalWaveRect=(-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200);
 }
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
@@ -37,29 +40,44 @@ void board::loadTexture(const char* s)
 }
 void board::start()
 {
-//    s.spawn();
-    Z1= new basicZombie;
-    Z1->spawn(1);
-    z[1].push_back(Z1);
-    Z2= new coneZombie;
-    Z2->spawn(2);
-    z[2].push_back(Z2);
-    Z1= new basicZombie;
-    Z1->spawn(4);
-    z[4].push_back(Z1);
 
-    P=new peashooter;
-    P->spawn(0,2);
-    p[2].push_back(P);
-    P=new peashooter;
-    P->spawn(8,1);
-    p[1].push_back(P);
-    P=new peashooter;
-    P->spawn(7,1);
-    p[1].push_back(P);
-    P=new peashooter;
-    P->spawn(2,4);
-    p[4].push_back(P);
+}
+void board::levelProgess(int num)
+{
+
+    if(curWave<level[num].size() )
+    {
+        if(SDL_GetTicks()-preWave>=15000||(curWave!=0&&checkEmpty()))
+        {
+            spawn(level[num][curWave]);
+            curWave++;
+            preWave=SDL_GetTicks();
+        }
+    }
+    if(curWave==level[num].size()-1) finalWave=1,finalWaveStartTime=SDL_GetTicks;
+}
+void board::spawn(int num)
+{
+    srand(time(0));
+    while(num>0)
+    {
+        int val=rand()%min(num,2)+1;
+        int lane=rand()%5;
+//        cout<<val<<"\n";
+        if(val==1)
+        {
+            Z1= new basicZombie;
+            Z1->spawn(lane);
+            z[lane].push_back(Z1);
+        }
+        if(val==2)
+        {
+            Z2= new coneZombie;
+            Z2->spawn(lane);
+            z[lane].push_back(Z2);
+        }
+        num-=val;
+    }
 }
 void board::event(SDL_Event e)
 {
@@ -67,6 +85,7 @@ void board::event(SDL_Event e)
 }
 void board::update()
 {
+    s.spawn();
     s.update();
     for(int row=0;row<5;row++)
     {
@@ -100,6 +119,17 @@ void board::update()
             }
         }
     }
+    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000)
+    {
+        finalWaveRect.x+=10;
+        if(finalWaveRect.x>=400) finalWaveRect.x=400;
+        finalWaveRect.y+=10;
+        if(finalWaveRect.y>=300) finalWaveRect.y=300;
+        finalWaveRect.w-=20;
+        if(finalWaveRect.w>=400) finalWaveRect.w=400;
+        finalWaveRect.h-=20;
+        if(finalWaveRect.h>=200) finalWaveRect.w=200;
+    }
 }
 void board::render()
 {
@@ -112,10 +142,12 @@ void board::render()
         for(int row=0;row<5;row++) l[row]->render();
     }
     s.render();
+    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000) SDL_RenderCopy(ren,tFinalWave,NULL,finalWaveRect);
 
 }
-void board::spawnSun()
+bool board::checkEmpty()
 {
-    s.spawn();
+    for(int i=0;i<5;i++) if(z[i].size()) return 0;
+    return 1;
 }
 

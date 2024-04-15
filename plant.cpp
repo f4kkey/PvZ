@@ -9,16 +9,24 @@ void plant::spawn(int i,int j)
     if(board::exist[i][j]) return;
     column=i;
     row=j;
-    pos.x=board::pos[i][j].x+30;
-    pos.y=board::pos[i][j].y-30;
-//    cout<<pos.x<<" "<<pos.y<<"\n";
+    pos.x=board::pos[i][j].x+20;
+    pos.y=board::pos[i][j].y-20;
     board::exist[i][j]=1;
     preFireTime=SDL_GetTicks();
+    sprite.x=0;
+    sprite.y=0;
 }
-void plant::setPos(int x,int y)
+void plant::setPlantTime(int x)
+{
+    prePlantTime=x;
+}
+void plant::setPos(int x,int y,int w,int h)
 {
     pos.x=x;
     pos.y=y;
+//    pos.w=w;
+//    pos.h=h;
+
 }
 SDL_Rect plant::getPos()
 {
@@ -62,4 +70,12 @@ void plant::changePickState()
 int plant::getPrice()
 {
     return price;
+}
+bool plant::plantable()
+{
+    if(SDL_GetTicks()-prePlantTime>=recharge)
+    {
+        return 1;
+    }
+    return 0;
 }

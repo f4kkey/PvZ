@@ -16,9 +16,11 @@ class board
         void loadTexture(const char* s);
         void start();
         void event(SDL_Event e);
+        void levelProgess(int num);
         void update();
         void render();
-        void spawnSun();
+        bool checkEmpty();
+        void spawn(int num);
         static SDL_Rect pos[9][5];
         static bool exist[9][5];
         static vector<zombie*> z[5];
@@ -31,8 +33,12 @@ class board
         basicZombie* Z1;
         coneZombie* Z2;
         pea* PE;
-        peashooter* P;
         ifstream levelFile;
         vector<int> level[5];
+        int preWave;
+        int curWave;
+        bool finalWave;
+        int finalWaveStartTime;
+        SDL_Rect finalWaveRect;
 
 };

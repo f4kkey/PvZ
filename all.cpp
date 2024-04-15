@@ -2,7 +2,9 @@
 SDL_Window* window=NULL;
 SDL_Renderer* ren=NULL;
 SDL_Texture *tPea=NULL;
-SDL_Texture *tBasicZombie=NULL;
+SDL_Texture *tBlank=NULL;
+SDL_Texture *tFinalWave=NULL;
+
 SDL_Texture *tPeashooter=NULL;
 SDL_Texture *tSunFlower=NULL;
 SDL_Texture *tShovel=NULL;
@@ -12,7 +14,15 @@ SDL_Texture *tWallnut=NULL;
 SDL_Texture *tCherryBomb=NULL;
 SDL_Texture *tPotatoMine=NULL;
 SDL_Texture *tRepeater=NULL;
-SDL_Texture *tConeZombie=NULL;
+
+
+SDL_Texture *tBody=NULL;
+SDL_Texture *tBackLeg=NULL;
+SDL_Texture *tFrontLeg=NULL;
+SDL_Texture *tBackHand=NULL;
+SDL_Texture *tFrontHand=NULL;
+SDL_Texture *tCone=NULL;
+SDL_Texture *tBucket=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)

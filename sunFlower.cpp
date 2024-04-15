@@ -6,13 +6,24 @@ sunFlower::sunFlower()
     live=1;
     health=300;
     fireSpeed=8000;
-    pos.w=80;
-    pos.h=100;
+    pos.w=100;
+    pos.h=120;
     fireTime=preFireTime=0;
+    recharge=5000;
+    prePlantTime=-5000;
 }
 void sunFlower::render()
 {
     SDL_RenderCopy(ren,tSunFlower,NULL,&pos);
+    if(!column&&!picked)
+    {
+        if(SDL_GetTicks()-prePlantTime<recharge)
+        {
+            rechargeRect=pos;
+            rechargeRect.h=pos.h*(recharge-SDL_GetTicks()+prePlantTime)/recharge;
+            SDL_RenderCopy(ren,tBlank,NULL,&rechargeRect);
+        }
+    }
 }
 void sunFlower::move()
 {

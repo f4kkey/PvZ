@@ -23,6 +23,8 @@ class zombie
         int biteTime,preBiteTime,biteSpeed;
         bool isBiting;
         int val;
+        int legAngle,handAngle,vLeg,vHand;
+        SDL_Point handCenter;
     private:
 
 

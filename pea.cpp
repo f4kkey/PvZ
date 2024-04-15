@@ -5,7 +5,7 @@ pea::pea()
     pos.w=pos.h=30;
     v=6;
     live=1;
-    damage=30;
+    damage=20;
 }
 void pea::spawn(int i,int j)
 {

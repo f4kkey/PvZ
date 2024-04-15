@@ -1,7 +1,12 @@
 #include "zombie.h"
 zombie::zombie()
 {
-
+    handAngle=legAngle=0;
+    vLeg=vHand=1;
+    handCenter={50,60};
+    pos.w=100;
+    pos.h=170;
+    pos.x=SCREEN_WIDTH;
 }
 SDL_Rect zombie::getPos()
 {
