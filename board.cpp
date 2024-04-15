@@ -27,7 +27,7 @@ board::board()
     }
     preWave=0;
     curWave=0;
-    finalWaveRect=(-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200);
+    finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
 }
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
@@ -54,7 +54,7 @@ void board::levelProgess(int num)
             preWave=SDL_GetTicks();
         }
     }
-    if(curWave==level[num].size()-1) finalWave=1,finalWaveStartTime=SDL_GetTicks;
+    if(curWave ==level[num].size()-1) finalWave=1,finalWaveStartTime=SDL_GetTicks();
 }
 void board::spawn(int num)
 {
@@ -142,7 +142,7 @@ void board::render()
         for(int row=0;row<5;row++) l[row]->render();
     }
     s.render();
-    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000) SDL_RenderCopy(ren,tFinalWave,NULL,finalWaveRect);
+    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000) SDL_RenderCopy(ren,tFinalWave,NULL,&finalWaveRect);
 
 }
 bool board::checkEmpty()
