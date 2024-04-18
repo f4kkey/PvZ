@@ -34,17 +34,29 @@ bool board::exist[9][5];
 vector<zombie*> board::z[5];
 vector<plant*> board::p[5];
 vector<pea*> board::pe[5];
+void board::reset()
+{
+    for(int i=0;i<5;i++)
+    {
+        z[i].clear();
+        p[i].clear();
+        pe[i].clear();
+    }
+    for(int i=0;i<9;i++) for(int j=0;j<5;j++) exist[i][j]=0;
+    finalWave=0;
+    curWave=0;
+    preWave=SDL_GetTicks();
+    finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
+    for(int row=0;row<5;row++) l[row]->reset();
+    s.reset();
+}
 void board::loadTexture(const char* s)
 {
     tex=loadIMG(s);
 }
-void board::start()
-{
-
-}
 void board::levelProgess(int num)
 {
-
+    if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
     if(curWave<level[num].size() )
     {
         if(SDL_GetTicks()-preWave>=15000||(curWave!=0&&checkEmpty()))
@@ -54,7 +66,7 @@ void board::levelProgess(int num)
             preWave=SDL_GetTicks();
         }
     }
-    if(curWave ==level[num].size()-1) finalWave=1,finalWaveStartTime=SDL_GetTicks();
+
 }
 void board::spawn(int num)
 {
@@ -63,7 +75,6 @@ void board::spawn(int num)
     {
         int val=rand()%min(num,2)+1;
         int lane=rand()%5;
-//        cout<<val<<"\n";
         if(val==1)
         {
             Z1= new basicZombie;
@@ -119,16 +130,16 @@ void board::update()
             }
         }
     }
-    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000)
+    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=3000)
     {
         finalWaveRect.x+=10;
-        if(finalWaveRect.x>=400) finalWaveRect.x=400;
+        if(finalWaveRect.x>=300) finalWaveRect.x=300;
         finalWaveRect.y+=10;
         if(finalWaveRect.y>=300) finalWaveRect.y=300;
         finalWaveRect.w-=20;
-        if(finalWaveRect.w>=400) finalWaveRect.w=400;
+        if(finalWaveRect.w<=600) finalWaveRect.w=600;
         finalWaveRect.h-=20;
-        if(finalWaveRect.h>=200) finalWaveRect.w=200;
+        if(finalWaveRect.h<=200) finalWaveRect.h=200;
     }
 }
 void board::render()
@@ -142,7 +153,7 @@ void board::render()
         for(int row=0;row<5;row++) l[row]->render();
     }
     s.render();
-    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=5000) SDL_RenderCopy(ren,tFinalWave,NULL,&finalWaveRect);
+    if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=3000) SDL_RenderCopy(ren,tFinalWave,NULL,&finalWaveRect);
 
 }
 bool board::checkEmpty()

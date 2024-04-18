@@ -8,6 +8,11 @@ lawnmover::lawnmover()
     pos.h=100;
     pos.w=100;
 }
+void lawnmover::reset()
+{
+    used=0;
+    pos.x=-50;
+}
 void lawnmover::setRow(int i)
 {
     row=i;

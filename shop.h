@@ -12,6 +12,7 @@ class shop
 {
     public:
         shop();
+        void reset();
         void spawn();
         void event(SDL_Event e);
         void update();

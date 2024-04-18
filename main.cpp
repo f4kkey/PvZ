@@ -6,7 +6,6 @@ int main(int agrv,char *argc[])
 
     G.init();
     G.loadResources();
-    G.setup();
     while(G.getGameState())
     {
         G.event();

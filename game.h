@@ -1,7 +1,7 @@
 #pragma once
-#include<bits/stdc++.h>
 #include "all.h"
 #include "board.h"
+#include "level.h"
 class game
 {
     public:
@@ -11,12 +11,13 @@ class game
         void event();
         bool getGameState();
         void render();
-        void setup();
 
     private:
         int time,pretime;
-        bool pause;
+        bool restart;
         bool gameState;
         SDL_Event e;
         board b;
+        levelMenu lv;
+        int ingame;
 };

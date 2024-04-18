@@ -14,6 +14,7 @@ class board
     public:
         board();
         void loadTexture(const char* s);
+        void reset();
         void start();
         void event(SDL_Event e);
         void levelProgess(int num);
@@ -21,6 +22,7 @@ class board
         void render();
         bool checkEmpty();
         void spawn(int num);
+
         static SDL_Rect pos[9][5];
         static bool exist[9][5];
         static vector<zombie*> z[5];

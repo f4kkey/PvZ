@@ -54,6 +54,8 @@
 		<Unit filename="game.h" />
 		<Unit filename="lawnmover.cpp" />
 		<Unit filename="lawnmover.h" />
+		<Unit filename="level.cpp" />
+		<Unit filename="level.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="pea.cpp" />
 		<Unit filename="pea.h" />

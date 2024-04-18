@@ -7,6 +7,7 @@ class lawnmover
         void move();
         void setRow(int i);
         void render();
+        void reset();
     private:
         SDL_Rect pos;
         bool used;

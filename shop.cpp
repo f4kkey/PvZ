@@ -16,12 +16,12 @@ shop::shop()
         seedPricePos[i].y=120;
         seedPricePos[i].w=100;
         seedPricePos[i].h=30;
-
     }
     ps=new peashooter;
     ps->setPos(seedPos[1].x,seedPos[1].y,seedPos[1].w,seedPos[1].h);
     sf=new sunFlower();
     sf->setPos(seedPos[2].x,seedPos[2].y,seedPos[2].w,seedPos[2].h);
+//    sf->setPlantTime(SDL_GetTicks()-5000);
     wn=new wallnut();
     wn->setPos(seedPos[3].x,seedPos[3].y,seedPos[3].w,seedPos[3].h);
     cb=new cherryBomb();
@@ -32,6 +32,15 @@ shop::shop()
     rp->setPos(seedPos[6].x,seedPos[6].y,seedPos[6].w,seedPos[6].h);
     cursor=new peashooter();
     pickVal=-1;
+}
+void shop::reset()
+{
+    ps->setPlantTime(SDL_GetTicks());
+    sf->setPlantTime(SDL_GetTicks()-5000);
+    wn->setPlantTime(SDL_GetTicks());
+    cb->setPlantTime(SDL_GetTicks());
+    pm->setPlantTime(SDL_GetTicks());
+    rp->setPlantTime(SDL_GetTicks());
 }
 vector<sun*> shop::s;
 void shop::renderText(int v,int i)

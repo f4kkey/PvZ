@@ -10,7 +10,7 @@ sunFlower::sunFlower()
     pos.h=120;
     fireTime=preFireTime=0;
     recharge=5000;
-    prePlantTime=-5000;
+//    prePlantTime=-5000;
 }
 void sunFlower::render()
 {

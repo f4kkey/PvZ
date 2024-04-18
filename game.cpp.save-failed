@@ -1,10 +1,10 @@
 #include "game.h"
 game::game()
 {
+    pause=0;
     gameState=1;
     time=pretime=0;
     ingame=0;
-    restart=0;
 }
 void game::init()
 {
@@ -26,7 +26,6 @@ void game::loadResources()
     SDL_SetTextureBlendMode(tBlank,SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(tBlank,127);
     tFinalWave=loadIMG("resources/others/finalwave.png");
-    tLevel1=loadIMG("resources/others/level1.png");
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");
@@ -45,7 +44,6 @@ void game::loadResources()
 }
 void game::event()
 {
-//    ingame=1;
     time=SDL_GetTicks();
     if(time-pretime<=20)
     {
@@ -60,7 +58,6 @@ void game::event()
         {
             lv.event(e);
             ingame=lv.getVal();
-            if(ingame) b.reset();
         }
         else
         {
@@ -70,16 +67,16 @@ void game::event()
                 SDL_GetMouseState(&x,&y);
                 if(x>=SCREEN_WIDTH-100&&x<=SCREEN_WIDTH&&y<=100&&y>=0)
                 {
-                    ingame=0;
+                    pause=1-pause;
                 }
-                b.event(e);
+                if(!pause) b.event(e);
             }
         }
 
     }
-    if(ingame>0)
+    if(ingame)
     {
-        b.levelProgess(ingame-1);
+        b.levelProgess(0);
         b.update();
     }
 
@@ -99,4 +96,8 @@ void game::render()
         b.render();
     }
     SDL_RenderPresent(ren);
+}
+void game::setup()
+{
+    b.start();
 }

@@ -4,6 +4,7 @@ SDL_Renderer* ren=NULL;
 SDL_Texture *tPea=NULL;
 SDL_Texture *tBlank=NULL;
 SDL_Texture *tFinalWave=NULL;
+SDL_Texture *tLevel1=NULL;
 
 SDL_Texture *tPeashooter=NULL;
 SDL_Texture *tSunFlower=NULL;
