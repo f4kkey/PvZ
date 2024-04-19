@@ -17,7 +17,7 @@ repeater::repeater()
 void repeater::render()
 {
     SDL_RenderCopy(ren,tRepeater,NULL,&pos);
-    if(!column&&!picked)
+    if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {

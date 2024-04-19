@@ -21,7 +21,7 @@ void potatoMine::render()
 {
     if(fireTime-preFireTime>=fireSpeed&&sprite.h<100) sprite.h+=v,sprite.y+=v;
     SDL_RenderCopy(ren,tPotatoMine,&sprite,&pos);
-    if(!column&&!picked)
+    if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {

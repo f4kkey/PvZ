@@ -5,17 +5,16 @@ sunFlower::sunFlower()
     price=50;
     live=1;
     health=300;
-    fireSpeed=24250;
+    fireSpeed=20000;
     pos.w=100;
     pos.h=120;
     fireTime=preFireTime=0;
     recharge=7500;
-//    prePlantTime=-5000;
 }
 void sunFlower::render()
 {
     SDL_RenderCopy(ren,tSunFlower,NULL,&pos);
-    if(!column&&!picked)
+    if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {

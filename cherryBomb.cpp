@@ -15,7 +15,7 @@ cherryBomb::cherryBomb()
 void cherryBomb::render()
 {
     SDL_RenderCopy(ren,tCherryBomb,NULL,&pos);
-    if(!column&&!picked)
+    if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {

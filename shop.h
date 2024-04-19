@@ -8,6 +8,7 @@
 #include "cherryBomb.h"
 #include "potatoMine.h"
 #include "repeater.h"
+#include "shovel.h"
 class shop
 {
     public:
@@ -26,7 +27,7 @@ class shop
         SDL_Rect seedPricePos[8];
         SDL_Rect pos;
         int totalSun;
-
+        vector<plant*> p;
         sun* S;
         int pickVal;
         plant* cursor;
@@ -36,6 +37,7 @@ class shop
         cherryBomb* cb;
         potatoMine* pm;
         repeater* rp;
+        shovel* sv;
         SDL_Texture *price;
         int textWidth,textHeight;
 };

@@ -14,7 +14,7 @@ peashooter::peashooter()
 void peashooter::render()
 {
     SDL_RenderCopy(ren,tPeashooter,NULL,&pos);
-    if(!column&&!picked)
+    if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {

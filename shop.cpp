@@ -1,12 +1,11 @@
 #include "shop.h"
 #include "board.h"
-#include "shovel.h"
 shop::shop()
 {
     totalSun=50;
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
-    sunSpawnSpeed=8000;
+    sunSpawnSpeed=10000;
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*100;
@@ -18,28 +17,27 @@ shop::shop()
         seedPricePos[i].h=30;
     }
     ps=new peashooter;
-    ps->setPos(seedPos[1].x,seedPos[1].y,seedPos[1].w,seedPos[1].h);
+    p.push_back(ps);
     sf=new sunFlower();
-    sf->setPos(seedPos[2].x,seedPos[2].y,seedPos[2].w,seedPos[2].h);
+    p.push_back(sf);
     wn=new wallnut();
-    wn->setPos(seedPos[3].x,seedPos[3].y,seedPos[3].w,seedPos[3].h);
+    p.push_back(wn);
     cb=new cherryBomb();
-    cb->setPos(seedPos[4].x,seedPos[4].y,seedPos[4].w,seedPos[4].h);
+    p.push_back(cb);
     pm=new potatoMine();
-    pm->setPos(seedPos[5].x,seedPos[5].y,seedPos[5].w,seedPos[5].h);
+    p.push_back(pm);
     rp=new repeater();
-    rp->setPos(seedPos[6].x,seedPos[6].y,seedPos[6].w,seedPos[6].h);
-    cursor=new peashooter();
-    pickVal=-1;
+    p.push_back(rp);
+    sv=new shovel();
+    p.push_back(sv);
+    for(int i=0;i<7;i++) p[i]->setPos(seedPos[i+1].x,seedPos[i+1].y);
+    cursor=new plant;
+
+    pickVal=0;
 }
 void shop::reset()
 {
-    ps->setPlantTime(SDL_GetTicks());
-    sf->setPlantTime(SDL_GetTicks()-5000);
-    wn->setPlantTime(SDL_GetTicks());
-    cb->setPlantTime(SDL_GetTicks());
-    pm->setPlantTime(SDL_GetTicks());
-    rp->setPlantTime(SDL_GetTicks());
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
 }
 vector<sun*> shop::s;
 void shop::renderText(int v,int i)
@@ -53,7 +51,6 @@ void shop::renderText(int v,int i)
     textWidth=tmpSurface->w;
     textHeight=tmpSurface->h;
     SDL_FreeSurface(tmpSurface);
-
     SDL_Rect tmp={seedPricePos[i].x+(seedPricePos[i].w-textWidth)/2,seedPricePos[i].y+(seedPricePos[i].h-textHeight)/2,textWidth,textHeight};
     SDL_RenderCopy(ren,price,NULL,&tmp);
 }
@@ -73,16 +70,20 @@ void shop::event(SDL_Event e)
     }
     if(e.type==SDL_MOUSEBUTTONDOWN)
     {
-        if(!cursor->isPicked() )
+        if(!pickVal )
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
-            if(inside(mousePosX,mousePosY,seedPos[1])&&totalSun>=ps->getPrice()&&ps->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new peashooter,pickVal=1,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[2])&&totalSun>=sf->getPrice()&&sf->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new sunFlower,pickVal=2,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[3])&&totalSun>=wn->getPrice()&&wn->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new wallnut,pickVal=3,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[4])&&totalSun>=cb->getPrice()&&cb->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new cherryBomb,pickVal=4,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[5])&&totalSun>=pm->getPrice()&&pm->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new potatoMine,pickVal=5,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[6])&&totalSun>=rp->getPrice()&&rp->plantable()) SDL_ShowCursor(SDL_DISABLE),cursor=new repeater,pickVal=6,cursor->changePickState();
-            if(inside(mousePosX,mousePosY,seedPos[7])) SDL_ShowCursor(SDL_DISABLE),cursor=new shovel,pickVal=7,cursor->changePickState();
+            for(int i=0;i<7;i++)
+            {
+                if(inside(mousePosX,mousePosY,seedPos[i+1])&&totalSun>=p[i]->getPrice()&&p[i]->plantable()) SDL_ShowCursor(SDL_DISABLE),pickVal=i+1;
+            }
+            if(pickVal==1) cursor=new peashooter;
+            if(pickVal==2) cursor=new sunFlower;
+            if(pickVal==3) cursor=new wallnut;
+            if(pickVal==4) cursor=new cherryBomb;
+            if(pickVal==5) cursor=new potatoMine;
+            if(pickVal==6) cursor=new repeater;
+            if(pickVal==7) cursor=new shovel;
         }
         else
         {
@@ -101,7 +102,7 @@ void shop::event(SDL_Event e)
                     }
                 }
             }
-            cursor->changePickState();
+            pickVal=0;
             SDL_ShowCursor(SDL_ENABLE);
         }
     }
@@ -129,24 +130,16 @@ void shop::render()
 {
     SDL_RenderCopy(ren,tSun,NULL,&seedPos[0]);
     renderText(totalSun,0);
-    ps->render();
-    renderText(100,1);
-    sf->render();
-    renderText(50,2);
-    wn->render();
-    renderText(50,3);
-    cb->render();
-    renderText(150,4);
-    pm->render();
-    renderText(25,5);
-    rp->render();
-    renderText(200,6);
-    SDL_RenderCopy(ren,tShovel,NULL,&seedPos[7]);
+    for(int i=0;i<7;i++)
+    {
+        p[i]->render();
+        if(i!=6) renderText(p[i]->getPrice(),i+1);
+    }
     for(auto &tmp:s) tmp->render();
-    if(cursor->isPicked())
+    if(pickVal)
     {
         SDL_GetMouseState(&mousePosX,&mousePosY);
-        cursor->setPos(mousePosX-TILE_WIDTH/3,mousePosY-TILE_HEIGHT/2,TILE_WIDTH,TILE_HEIGHT);
+        cursor->setPos(mousePosX-TILE_WIDTH/3,mousePosY-TILE_HEIGHT/2);
         cursor->render();
     }
 }
@@ -156,10 +149,5 @@ void shop::placePlant(int column,int row)
     totalSun-=cursor->getPrice();
     cursor->spawn(column,row);
     board::p[row].push_back(cursor);
-    if(pickVal==1) ps->setPlantTime(SDL_GetTicks());
-    if(pickVal==2) sf->setPlantTime(SDL_GetTicks());
-    if(pickVal==3) wn->setPlantTime(SDL_GetTicks());
-    if(pickVal==4) cb->setPlantTime(SDL_GetTicks());
-    if(pickVal==5) pm->setPlantTime(SDL_GetTicks());
-    if(pickVal==6) rp->setPlantTime(SDL_GetTicks());
+    p[pickVal-1]->setPlantTime(SDL_GetTicks());
 }

@@ -4,16 +4,14 @@ class plant
 {
     public:
         plant();
-        virtual void render()=0;
-        virtual void move()=0;
+        virtual void render();
+        virtual void move();
         void spawn(int x,int y);
         bool fire();
         SDL_Rect getPos();
         void takeDamage(int damageTaken);
         bool alive();
-        bool isPicked();
-        void changePickState();
-        void setPos(int x,int y,int w,int h);
+        void setPos(int x,int y);
         int getColumn();
         int getRow();
         int getPrice();
@@ -27,7 +25,6 @@ class plant
         int column,row;
         int fireTime,preFireTime;
         int prePlantTime;
-        bool picked;
         int price;
         int recharge;
         int damage;

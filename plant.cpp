@@ -2,7 +2,15 @@
 #include "board.h"
 plant::plant()
 {
-    picked=0;
+    prePlantTime=-50000;
+}
+void plant::render()
+{
+
+}
+void plant::move()
+{
+
 }
 void plant::spawn(int i,int j)
 {
@@ -20,12 +28,10 @@ void plant::setPlantTime(int x)
 {
     prePlantTime=x;
 }
-void plant::setPos(int x,int y,int w,int h)
+void plant::setPos(int x,int y)
 {
     pos.x=x;
     pos.y=y;
-//    pos.w=w;
-//    pos.h=h;
 
 }
 SDL_Rect plant::getPos()
@@ -58,14 +64,6 @@ void plant::takeDamage(int damageTaken)
 bool plant::alive()
 {
     return live;
-}
-bool plant::isPicked()
-{
-    return picked;
-}
-void plant::changePickState()
-{
-    picked=1-picked;
 }
 int plant::getPrice()
 {
