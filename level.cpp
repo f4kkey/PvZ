@@ -3,15 +3,15 @@ levelMenu::levelMenu()
 {
     join=1;
     level1={200,200,200,200};
-    level2={ };
-    quit={ };
+    level2={800,200,200,200};
+    quit={400,500,400,200};
     val=0;
 }
 void levelMenu::render()
 {
     SDL_SetRenderDrawColor(ren,255,255,255,255);
     SDL_RenderClear(ren);
-    SDL_RenderCopy(ren,tLevel1,NULL,&level1);
+    SDL_RenderCopy(ren,tLevel,NULL,NULL);
 }
 void levelMenu::event(SDL_Event e)
 {

@@ -5,11 +5,11 @@ sunFlower::sunFlower()
     price=50;
     live=1;
     health=300;
-    fireSpeed=8000;
+    fireSpeed=24250;
     pos.w=100;
     pos.h=120;
     fireTime=preFireTime=0;
-    recharge=5000;
+    recharge=7500;
 //    prePlantTime=-5000;
 }
 void sunFlower::render()

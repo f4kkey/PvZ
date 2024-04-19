@@ -15,7 +15,7 @@ potatoMine::potatoMine()
     sprite.w=100;
     sprite.h=80;
     v=2;
-    recharge=15000;
+    recharge=30000;
 }
 void potatoMine::render()
 {

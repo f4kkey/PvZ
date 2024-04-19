@@ -12,7 +12,7 @@ repeater::repeater()
     pos.w=100;
     pos.h=120;
     fireTime=preFireTime=0;
-    recharge=5000;
+    recharge=7500;
 }
 void repeater::render()
 {

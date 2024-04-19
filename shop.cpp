@@ -3,7 +3,7 @@
 #include "shovel.h"
 shop::shop()
 {
-    totalSun=200;
+    totalSun=50;
     pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
     sunSpawnSpeed=8000;
@@ -21,7 +21,6 @@ shop::shop()
     ps->setPos(seedPos[1].x,seedPos[1].y,seedPos[1].w,seedPos[1].h);
     sf=new sunFlower();
     sf->setPos(seedPos[2].x,seedPos[2].y,seedPos[2].w,seedPos[2].h);
-//    sf->setPlantTime(SDL_GetTicks()-5000);
     wn=new wallnut();
     wn->setPos(seedPos[3].x,seedPos[3].y,seedPos[3].w,seedPos[3].h);
     cb=new cherryBomb();

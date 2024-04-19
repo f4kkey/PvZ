@@ -26,7 +26,7 @@ void game::loadResources()
     SDL_SetTextureBlendMode(tBlank,SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(tBlank,127);
     tFinalWave=loadIMG("resources/others/finalwave.png");
-    tLevel1=loadIMG("resources/others/level1.png");
+    tLevel=loadIMG("resources/others/levelmenu.png");
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");

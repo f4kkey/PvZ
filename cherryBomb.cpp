@@ -7,10 +7,10 @@ cherryBomb::cherryBomb()
     health=999999999;
     pos.w=100;
     pos.h=120;
-    fireSpeed=1000;
+    fireSpeed=1200;
     fireTime=preFireTime=0;
     damage=1800;
-    recharge=15000;
+    recharge=50000;
 }
 void cherryBomb::render()
 {

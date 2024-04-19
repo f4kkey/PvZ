@@ -13,7 +13,7 @@ wallnut::wallnut()
         sprite[i].w=100;
         sprite[i].h=120;
     }
-    recharge=15000;
+    recharge=30000;
 }
 void wallnut::render()
 {

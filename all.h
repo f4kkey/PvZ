@@ -20,7 +20,7 @@ extern SDL_Texture *tShovel;
 extern SDL_Texture *tLawnmover;
 extern SDL_Texture *tBlank;
 extern SDL_Texture *tFinalWave;
-extern SDL_Texture *tLevel1;
+extern SDL_Texture *tLevel;
 
 extern SDL_Texture *tPeashooter;
 extern SDL_Texture *tSunFlower;

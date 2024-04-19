@@ -56,11 +56,11 @@ void board::loadTexture(const char* s)
 }
 void board::levelProgess(int num)
 {
-    if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
     if(curWave<level[num].size() )
     {
         if(SDL_GetTicks()-preWave>=15000||(curWave!=0&&checkEmpty()))
         {
+            if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
             spawn(level[num][curWave]);
             curWave++;
             preWave=SDL_GetTicks();

@@ -8,7 +8,7 @@ peashooter::peashooter()
     fireSpeed=1425;
     pos.w=100;
     pos.h=120;
-    recharge=5000;
+    recharge=7500;
     fireTime=preFireTime=0;
 }
 void peashooter::render()
