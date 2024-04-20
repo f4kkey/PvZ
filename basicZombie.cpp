@@ -3,15 +3,6 @@
 basicZombie::basicZombie()
 {
     health=181;
-    damage=50;
-    v=1;
-    live=1;
-    val=1;
-    walkSpeed=50;
-    walkTime=preWalkTime=0;
-    biteSpeed=500;
-    isBiting=0;
-    biteTime=preBiteTime=0;
 }
 void basicZombie::render()
 {
@@ -39,6 +30,7 @@ void basicZombie::move()
                 isBiting=0;
             }
             legAngle=0;
+            break;
         }
     }
     walkTime=SDL_GetTicks();

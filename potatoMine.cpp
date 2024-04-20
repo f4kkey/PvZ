@@ -60,14 +60,11 @@ void potatoMine::move()
                     {
                         delete tmp;
                         board::z[row].erase(board::z[row].begin()+j);
+                        j--;
                     }
                 }
             }
         }
 
     }
-}
-void potatoMine::fixedSprite()
-{
-    sprite.y=40;
 }

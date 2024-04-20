@@ -25,7 +25,6 @@ class shop
         int sunSpawnTime,preSunSpawnTime,sunSpawnSpeed;
         SDL_Rect seedPos[8];
         SDL_Rect seedPricePos[8];
-        SDL_Rect pos;
         int totalSun;
         vector<plant*> p;
         sun* S;

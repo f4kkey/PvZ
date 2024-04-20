@@ -2,8 +2,6 @@
 #include "board.h"
 shop::shop()
 {
-    totalSun=50;
-    pos={0,0,SCREEN_WIDTH,150};
     sunSpawnTime=preSunSpawnTime=0;
     sunSpawnSpeed=10000;
     for(int i=0;i<8;i++)
@@ -37,7 +35,10 @@ shop::shop()
 }
 void shop::reset()
 {
+    //20000
     for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
+    preSunSpawnTime=SDL_GetTicks()-5000;
+    totalSun=50;
 }
 vector<sun*> shop::s;
 void shop::renderText(int v,int i)

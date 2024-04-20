@@ -58,6 +58,7 @@ void board::levelProgess(int num)
 {
     if(curWave<level[num].size() )
     {
+        //20000;
         if(SDL_GetTicks()-preWave>=20000||(curWave!=0&&checkEmpty()))
         {
             if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
@@ -73,20 +74,13 @@ void board::spawn(int num)
     srand(time(0));
     while(num>0)
     {
-        int val=rand()%min(num,2)+1;
+        int val=rand()%min(num,3)+1;
         int lane=rand()%5;
-        if(val==1)
-        {
-            Z1= new basicZombie;
-            Z1->spawn(lane);
-            z[lane].push_back(Z1);
-        }
-        if(val==2)
-        {
-            Z2= new coneZombie;
-            Z2->spawn(lane);
-            z[lane].push_back(Z2);
-        }
+        if(val==1)  Z= new basicZombie;
+        if(val==2) Z= new coneZombie;
+        if(val==3) Z=new bucketZombie;
+        Z->spawn(lane);
+        z[lane].push_back(Z);
         num-=val;
     }
 }
@@ -113,9 +107,9 @@ void board::update()
     for(int i=0;i<5;i++)
     {
         for(auto &tmp:p[i]) tmp->move();
-        for(auto &tmp:z[i]) tmp->move();
         for(auto &tmp:pe[i]) tmp->move();
-        for(int row=0;row<5;row++) l[row]->move();
+        for(auto &tmp:z[i]) tmp->move();
+        l[i]->move();
     }
     for(int row=0;row<5;row++)
     {
@@ -148,9 +142,9 @@ void board::render()
     for(int i=0;i<5;i++)
     {
         for(auto &tmp:p[i]) tmp->render();
+        l[i]->render();
         for(auto &tmp:z[i]) tmp->render();
         for(auto &tmp:pe[i]) tmp->render();
-        for(int row=0;row<5;row++) l[row]->render();
     }
     s.render();
     if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=3000) SDL_RenderCopy(ren,tFinalWave,NULL,&finalWaveRect);

@@ -1,20 +1,19 @@
-#include "basicZombie.h"
+#include "bucketZombie.h"
 #include "board.h"
-coneZombie::coneZombie()
+bucketZombie::bucketZombie()
 {
-    health=551;
+    health=1281;
 }
-void coneZombie::render()
+void bucketZombie::render()
 {
-//    cout<<handAngle<<" "<<vHand<<"\n";
     SDL_RenderCopyEx(ren,tBackHand,NULL,&pos,handAngle+isBiting*50,&handCenter,SDL_FLIP_NONE);
     SDL_RenderCopyEx(ren,tBackLeg,NULL,&pos,legAngle,NULL,SDL_FLIP_NONE);
     SDL_RenderCopyEx(ren,tFrontLeg,NULL,&pos,-legAngle,NULL,SDL_FLIP_NONE);
     SDL_RenderCopy(ren,tBody,NULL,&pos);
     if(health>90) SDL_RenderCopyEx(ren,tFrontHand,NULL,&pos,-handAngle+isBiting*50,&handCenter,SDL_FLIP_NONE);
-    if(health>181) SDL_RenderCopy(ren,tCone,NULL,&pos);
+    if(health>181) SDL_RenderCopy(ren,tBucket,NULL,&pos);
 }
-void coneZombie::move()
+void bucketZombie::move()
 {
     isBiting=0;
     for(int j=0;j<board::p[row].size();j++)

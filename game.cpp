@@ -68,7 +68,7 @@ void game::event()
             {
                 int x,y;
                 SDL_GetMouseState(&x,&y);
-                if(x>=SCREEN_WIDTH-100&&x<=SCREEN_WIDTH&&y<=100&&y>=0)
+                if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=100&&y>=0)
                 {
                     ingame=0;
                 }

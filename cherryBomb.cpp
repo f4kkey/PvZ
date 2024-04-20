@@ -42,11 +42,11 @@ void cherryBomb::move()
             if(collision(radius,tmp->getPos()))
             {
                 tmp->takeDamage(damage);
-                live=0;
                 if(!tmp->alive())
                 {
                     delete tmp;
                     board::z[row].erase(board::z[row].begin()+j);
+                    j--;
                 }
             }
         }
@@ -57,11 +57,11 @@ void cherryBomb::move()
             if(collision(radius,tmp->getPos()))
             {
                 tmp->takeDamage(damage);
-                live=0;
                 if(!tmp->alive())
                 {
                     delete tmp;
                     board::z[row-1].erase(board::z[row-1].begin()+j);
+                    j--;
                 }
             }
         }
@@ -72,11 +72,11 @@ void cherryBomb::move()
             if(collision(radius,tmp->getPos()))
             {
                 tmp->takeDamage(damage);
-                live=0;
                 if(!tmp->alive())
                 {
                     delete tmp;
                     board::z[row+1].erase(board::z[row+1].begin()+j);
+                    j--;
                 }
             }
         }

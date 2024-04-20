@@ -1,6 +1,16 @@
 #include "zombie.h"
 zombie::zombie()
 {
+    damage=50;
+    v=1;
+    live=1;
+    val=1;
+    walkSpeed=50;
+    walkTime=preWalkTime=0;
+    biteSpeed=500;
+    isBiting=0;
+    biteTime=preBiteTime=0;
+
     handAngle=legAngle=0;
     vLeg=vHand=1;
     handCenter={50,60};

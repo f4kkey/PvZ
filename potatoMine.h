@@ -7,7 +7,6 @@ class potatoMine:public plant
         potatoMine();
         void render();
         void move();
-        void fixedSprite();
     private:
         SDL_Rect radius;
         int v;

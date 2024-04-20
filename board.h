@@ -5,9 +5,9 @@
 #include "coneZombie.h"
 #include "pea.h"
 #include "plant.h"
-#include "peashooter.h"
 #include "shop.h"
 #include "lawnmover.h"
+#include "bucketZombie.h"
 using namespace std;
 class board
 {
@@ -32,8 +32,7 @@ class board
         lawnmover* l[5];
         SDL_Texture* tex;
         shop s;
-        basicZombie* Z1;
-        coneZombie* Z2;
+        zombie *Z;
         pea* PE;
         ifstream levelFile;
         vector<int> level[5];

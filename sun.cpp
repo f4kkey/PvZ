@@ -18,7 +18,7 @@ void sun::spawn(int x,int y,int range)
     srand(time(0));
     if(y==-1)
     {
-        pos.x=(rand()*123)%(SCREEN_WIDTH-100);
+        pos.x=(rand()*123)%(SCREEN_WIDTH-400);
         pos.y=-pos.h;
     }
     else

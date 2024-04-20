@@ -4,7 +4,7 @@ lawnmover::lawnmover()
 {
     used=0;
     pos.x=-50;
-    v=1;
+    v=7;
     pos.h=100;
     pos.w=100;
 }
