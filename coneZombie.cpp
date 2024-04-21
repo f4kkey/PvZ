@@ -12,7 +12,9 @@ void coneZombie::render()
     SDL_RenderCopyEx(ren,tFrontLeg,NULL,&pos,-legAngle,NULL,SDL_FLIP_NONE);
     SDL_RenderCopy(ren,tBody,NULL,&pos);
     if(health>90) SDL_RenderCopyEx(ren,tFrontHand,NULL,&pos,-handAngle+isBiting*50,&handCenter,SDL_FLIP_NONE);
-    if(health>181) SDL_RenderCopy(ren,tCone,NULL,&pos);
+    if(health>411) SDL_RenderCopy(ren,tCone,NULL,&pos);
+    else if(health>291) SDL_RenderCopy(ren,tCone2,NULL,&pos);
+    else if(health>181) SDL_RenderCopy(ren,tCone3,NULL,&pos);
 }
 void coneZombie::move()
 {

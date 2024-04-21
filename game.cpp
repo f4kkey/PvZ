@@ -41,7 +41,11 @@ void game::loadResources()
     tBackHand=loadIMG("resources/zombies/backhand.png");
     tFrontHand=loadIMG("resources/zombies/fronthand.png");
     tCone=loadIMG("resources/zombies/cone.png");
+    tCone2=loadIMG("resources/zombies/cone2.png");
+    tCone3=loadIMG("resources/zombies/cone3.png");
     tBucket=loadIMG("resources/zombies/bucket.png");
+    tBucket2=loadIMG("resources/zombies/bucket2.png");
+    tBucket3=loadIMG("resources/zombies/bucket3.png");
 }
 void game::event()
 {

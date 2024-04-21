@@ -11,7 +11,13 @@ void bucketZombie::render()
     SDL_RenderCopyEx(ren,tFrontLeg,NULL,&pos,-legAngle,NULL,SDL_FLIP_NONE);
     SDL_RenderCopy(ren,tBody,NULL,&pos);
     if(health>90) SDL_RenderCopyEx(ren,tFrontHand,NULL,&pos,-handAngle+isBiting*50,&handCenter,SDL_FLIP_NONE);
-    if(health>181) SDL_RenderCopy(ren,tBucket,NULL,&pos);
+    if(health>921) SDL_RenderCopy(ren,tBucket,NULL,&pos);
+    else if(health>561) SDL_RenderCopy(ren,tBucket2,NULL,&pos);
+    else if(health>181)
+    {
+//        cout<<"lmao\n";
+        SDL_RenderCopy(ren,tBucket3,NULL,&pos);
+    }
 }
 void bucketZombie::move()
 {

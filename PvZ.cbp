@@ -46,6 +46,8 @@
 		<Unit filename="basicZombie.h" />
 		<Unit filename="board.cpp" />
 		<Unit filename="board.h" />
+		<Unit filename="bucketZombie.cpp" />
+		<Unit filename="bucketZombie.h" />
 		<Unit filename="cherryBomb.cpp" />
 		<Unit filename="cherryBomb.h" />
 		<Unit filename="coneZombie.cpp" />

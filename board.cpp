@@ -38,8 +38,11 @@ void board::reset()
 {
     for(int i=0;i<5;i++)
     {
+        for(auto &tmp:z[i]) delete tmp;
         z[i].clear();
+        for(auto &tmp:p[i]) delete tmp;
         p[i].clear();
+        for(auto &tmp:pe[i]) delete tmp;
         pe[i].clear();
     }
     for(int i=0;i<9;i++) for(int j=0;j<5;j++) exist[i][j]=0;
@@ -59,7 +62,7 @@ void board::levelProgess(int num)
     if(curWave<level[num].size() )
     {
         //20000;
-        if(SDL_GetTicks()-preWave>=20000||(curWave!=0&&checkEmpty()))
+        if(SDL_GetTicks()-preWave>=1000||(curWave!=0&&checkEmpty()))
         {
             if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
             spawn(level[num][curWave]);

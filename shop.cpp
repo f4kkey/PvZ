@@ -38,7 +38,9 @@ void shop::reset()
     //20000
     for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
     preSunSpawnTime=SDL_GetTicks()-5000;
-    totalSun=50;
+    totalSun=500;
+    for(auto &tmp:s) delete tmp;
+    s.clear();
 }
 vector<sun*> shop::s;
 void shop::renderText(int v,int i)
@@ -69,6 +71,7 @@ void shop::event(SDL_Event e)
             i--;
         }
     }
+
     if(e.type==SDL_MOUSEBUTTONDOWN)
     {
         if(!pickVal )
@@ -76,7 +79,10 @@ void shop::event(SDL_Event e)
             SDL_GetMouseState(&mousePosX,&mousePosY);
             for(int i=0;i<7;i++)
             {
-                if(inside(mousePosX,mousePosY,seedPos[i+1])&&totalSun>=p[i]->getPrice()&&p[i]->plantable()) SDL_ShowCursor(SDL_DISABLE),pickVal=i+1;
+                if(inside(mousePosX,mousePosY,seedPos[i+1])&&totalSun>=p[i]->getPrice()&&p[i]->plantable())
+                {
+                    SDL_ShowCursor(SDL_DISABLE),pickVal=i+1;
+                }
             }
             if(pickVal==1) cursor=new peashooter;
             if(pickVal==2) cursor=new sunFlower;

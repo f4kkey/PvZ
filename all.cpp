@@ -23,7 +23,11 @@ SDL_Texture *tFrontLeg=NULL;
 SDL_Texture *tBackHand=NULL;
 SDL_Texture *tFrontHand=NULL;
 SDL_Texture *tCone=NULL;
+SDL_Texture *tCone2=NULL;
+SDL_Texture *tCone3=NULL;
 SDL_Texture *tBucket=NULL;
+SDL_Texture *tBucket3=NULL;
+SDL_Texture *tBucket2=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 SDL_Texture* loadIMG( const char* s)

@@ -5,7 +5,7 @@ zombie::zombie()
     v=1;
     live=1;
     val=1;
-    walkSpeed=50;
+    walkSpeed=65;
     walkTime=preWalkTime=0;
     biteSpeed=500;
     isBiting=0;
