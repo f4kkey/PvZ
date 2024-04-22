@@ -7,11 +7,11 @@ shop::shop()
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*100;
-        seedPos[i].w=100;
+        seedPos[i].w=99;
         seedPos[i].h=120;
         seedPricePos[i].x=(i)*100;
         seedPricePos[i].y=120;
-        seedPricePos[i].w=100;
+        seedPricePos[i].w=99;
         seedPricePos[i].h=30;
     }
     ps=new peashooter;
@@ -36,7 +36,7 @@ shop::shop()
 void shop::reset()
 {
     //20000
-    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-60000);
     preSunSpawnTime=SDL_GetTicks()-5000;
     totalSun=500;
     for(auto &tmp:s) delete tmp;

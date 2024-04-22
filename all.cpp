@@ -16,12 +16,12 @@ SDL_Texture *tCherryBomb=NULL;
 SDL_Texture *tPotatoMine=NULL;
 SDL_Texture *tRepeater=NULL;
 
-
+SDL_Texture *tHead=NULL;
 SDL_Texture *tBody=NULL;
 SDL_Texture *tBackLeg=NULL;
 SDL_Texture *tFrontLeg=NULL;
-SDL_Texture *tBackHand=NULL;
-SDL_Texture *tFrontHand=NULL;
+SDL_Texture *tBackArm=NULL;
+SDL_Texture *tFrontArm=NULL;
 SDL_Texture *tCone=NULL;
 SDL_Texture *tCone2=NULL;
 SDL_Texture *tCone3=NULL;

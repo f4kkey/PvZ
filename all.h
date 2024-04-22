@@ -29,9 +29,10 @@ extern SDL_Texture *tCherryBomb;
 extern SDL_Texture *tPotatoMine;
 extern SDL_Texture *tRepeater;
 
+extern SDL_Texture *tHead;
 extern SDL_Texture *tBody;
-extern SDL_Texture *tBackHand;
-extern SDL_Texture *tFrontHand;
+extern SDL_Texture *tBackArm;
+extern SDL_Texture *tFrontArm;
 extern SDL_Texture *tBackLeg;
 extern SDL_Texture *tFrontLeg;
 extern SDL_Texture *tCone;

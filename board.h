@@ -41,5 +41,6 @@ class board
         bool finalWave;
         int finalWaveStartTime;
         SDL_Rect finalWaveRect;
+        bool lose;
 
 };

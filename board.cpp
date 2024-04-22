@@ -7,7 +7,7 @@ board::board()
         int y=250;
         for(int j=0;j<5;j++)
         {
-            pos[i][j]={x,y,120,100};
+            pos[i][j]={x,y,TILE_WIDTH-1,TILE_HEIGHT-1};
             y+=TILE_HEIGHT;
         }
         x+=TILE_WIDTH;
@@ -106,16 +106,6 @@ void board::update()
                 p[row].erase(p[row].begin()+i);
             }
         }
-    }
-    for(int i=0;i<5;i++)
-    {
-        for(auto &tmp:p[i]) tmp->move();
-        for(auto &tmp:pe[i]) tmp->move();
-        for(auto &tmp:z[i]) tmp->move();
-        l[i]->move();
-    }
-    for(int row=0;row<5;row++)
-    {
         for(int i=0;i<pe[row].size();i++)
         {
             pea *tmp=pe[row][i];
@@ -126,7 +116,25 @@ void board::update()
                 delete tmp;
             }
         }
+        for(int i=0;i<z[row].size();i++)
+        {
+            zombie *tmp=z[row][i];
+            if(tmp->disapear())
+            {
+                z[row].erase(z[row].begin()+i);
+                i--;
+                delete tmp;
+            }
+        }
     }
+    for(int i=0;i<5;i++)
+    {
+        for(auto &tmp:p[i]) tmp->move();
+        for(auto &tmp:pe[i]) tmp->move();
+        for(auto &tmp:z[i]) tmp->move();
+        l[i]->move();
+    }
+
     if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=3000)
     {
         finalWaveRect.x+=10;
@@ -138,6 +146,7 @@ void board::update()
         finalWaveRect.h-=20;
         if(finalWaveRect.h<=200) finalWaveRect.h=200;
     }
+
 }
 void board::render()
 {

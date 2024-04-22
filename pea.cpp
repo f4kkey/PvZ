@@ -22,15 +22,15 @@ void pea::move()
         zombie *tmp=board::z[row][j];
         SDL_Rect tmpPos=pos;
         tmpPos.x-=20;
-        if(collision(tmpPos,tmp->getPos()))
+        if(tmp->alive()&&collision(tmpPos,tmp->getPos()))
         {
             tmp->takeDamage(damage);
             live=0;
-            if(!tmp->alive())
-            {
-                delete tmp;
-                board::z[row].erase(board::z[row].begin()+j);
-            }
+//            if(!tmp->alive())
+//            {
+//                delete tmp;
+//                board::z[row].erase(board::z[row].begin()+j);
+//            }
             break;
         }
     }

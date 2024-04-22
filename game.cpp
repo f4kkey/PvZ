@@ -35,11 +35,12 @@ void game::loadResources()
     tPotatoMine=loadIMG("resources/plants/potatomine.png");
     tRepeater=loadIMG("resources/plants/repeater.png");
 
+    tHead=loadIMG("resources/zombies/head.png");
     tBody=loadIMG("resources/zombies/body.png");
     tBackLeg=loadIMG("resources/zombies/backleg.png");
     tFrontLeg=loadIMG("resources/zombies/frontleg.png");
-    tBackHand=loadIMG("resources/zombies/backhand.png");
-    tFrontHand=loadIMG("resources/zombies/fronthand.png");
+    tBackArm=loadIMG("resources/zombies/backarm.png");
+    tFrontArm=loadIMG("resources/zombies/frontarm.png");
     tCone=loadIMG("resources/zombies/cone.png");
     tCone2=loadIMG("resources/zombies/cone2.png");
     tCone3=loadIMG("resources/zombies/cone3.png");

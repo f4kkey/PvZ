@@ -10,13 +10,17 @@ zombie::zombie()
     biteSpeed=500;
     isBiting=0;
     biteTime=preBiteTime=0;
+    vFall=3;
+    bottom={10,190};
+    bodyAngle=0;
 
-    handAngle=legAngle=0;
-    vLeg=vHand=1;
-    handCenter={50,60};
+    armAngle=legAngle=0;
+    vLeg=vArm=1;
+    armCenter={50,60};
     pos.w=100;
     pos.h=170;
     pos.x=SCREEN_WIDTH;
+    exist=1;
 }
 SDL_Rect zombie::getPos()
 {
@@ -34,7 +38,11 @@ void zombie::spawn(int x)
 void zombie::takeDamage(int damageTaken)
 {
     health-=damageTaken;
-    if(health<=0) live=0;
+    if(health<=0)
+    {
+        live=0;
+        deadTime=SDL_GetTicks();
+    }
 }
 bool zombie::alive()
 {
@@ -53,4 +61,8 @@ int zombie::bite()
 void zombie::biting(bool mask)
 {
     isBiting=mask;
+}
+bool zombie::disapear()
+{
+    return 1-exist;
 }
