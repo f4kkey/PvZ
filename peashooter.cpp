@@ -9,7 +9,7 @@ peashooter::peashooter()
     pos.w=100;
     pos.h=120;
     recharge=7500;
-    fireTime=preFireTime=0;
+    fireTime=0;
 }
 void peashooter::render()
 {
@@ -43,4 +43,9 @@ void peashooter::move()
 
         }
     }
+}
+void peashooter::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    preFireTime=SDL_GetTicks();
 }

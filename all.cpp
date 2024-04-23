@@ -21,6 +21,7 @@ SDL_Texture *tBody=NULL;
 SDL_Texture *tBackLeg=NULL;
 SDL_Texture *tFrontLeg=NULL;
 SDL_Texture *tBackArm=NULL;
+SDL_Texture *tBackFlagArm=NULL;
 SDL_Texture *tFrontArm=NULL;
 SDL_Texture *tCone=NULL;
 SDL_Texture *tCone2=NULL;

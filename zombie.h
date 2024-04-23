@@ -12,7 +12,7 @@ class zombie
         bool disapear();
         void biting(bool mask);
         virtual void render()=0;
-        virtual void move()=0;
+        void move();
     protected:
         int health;
         int damage;

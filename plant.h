@@ -6,7 +6,7 @@ class plant
         plant();
         virtual void render();
         virtual void move();
-        void spawn(int x,int y);
+        virtual void spawn(int i,int j);
         bool fire();
         SDL_Rect getPos();
         void takeDamage(int damageTaken);
@@ -18,6 +18,7 @@ class plant
         bool plantable();
         void setPlantTime(int x);
     protected:
+
         int health;
         bool live;
         int fireSpeed;
@@ -30,6 +31,7 @@ class plant
         int damage;
         SDL_Rect sprite;
         SDL_Rect rechargeRect;
+
 
     private:
 

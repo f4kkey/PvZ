@@ -32,6 +32,7 @@ extern SDL_Texture *tRepeater;
 extern SDL_Texture *tHead;
 extern SDL_Texture *tBody;
 extern SDL_Texture *tBackArm;
+extern SDL_Texture *tBackFlagArm;
 extern SDL_Texture *tFrontArm;
 extern SDL_Texture *tBackLeg;
 extern SDL_Texture *tFrontLeg;

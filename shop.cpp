@@ -3,7 +3,7 @@
 shop::shop()
 {
     sunSpawnTime=preSunSpawnTime=0;
-    sunSpawnSpeed=10000;
+    sunSpawnSpeed=9000;
     for(int i=0;i<8;i++)
     {
         seedPos[i].x=(i)*100;

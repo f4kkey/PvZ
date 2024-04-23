@@ -20,7 +20,6 @@ void plant::spawn(int i,int j)
     pos.x=board::pos[i][j].x+20;
     pos.y=board::pos[i][j].y-20;
     board::exist[i][j]=1;
-    preFireTime=SDL_GetTicks();
     sprite.x=0;
     sprite.y=0;
 }

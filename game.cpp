@@ -40,6 +40,7 @@ void game::loadResources()
     tBackLeg=loadIMG("resources/zombies/backleg.png");
     tFrontLeg=loadIMG("resources/zombies/frontleg.png");
     tBackArm=loadIMG("resources/zombies/backarm.png");
+    tBackFlagArm=loadIMG("resources/zombies/backflagarm.png");
     tFrontArm=loadIMG("resources/zombies/frontarm.png");
     tCone=loadIMG("resources/zombies/cone.png");
     tCone2=loadIMG("resources/zombies/cone2.png");

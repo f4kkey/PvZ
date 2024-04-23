@@ -6,6 +6,5 @@ class coneZombie:public zombie
     public:
         coneZombie();
         void render();
-        void move();
     private:
 };

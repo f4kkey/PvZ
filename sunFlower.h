@@ -8,6 +8,7 @@ class sunFlower:public plant
         sunFlower();
         void render();
         void move();
+        void spawn(int i,int j);
     private:
         sun *s;
 };

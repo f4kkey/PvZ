@@ -8,6 +8,7 @@
 #include "shop.h"
 #include "lawnmover.h"
 #include "bucketZombie.h"
+#include "flagZombie.h"
 using namespace std;
 class board
 {

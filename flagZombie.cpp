@@ -1,14 +1,15 @@
 #include "bucketZombie.h"
 #include "board.h"
-bucketZombie::bucketZombie()
+flagZombie::flagZombie()
 {
     health=1281;
+    walkSpeed=40;
 }
-void bucketZombie::render()
+void flagZombie::render()
 {
     if(live)
     {
-        SDL_RenderCopyEx(ren,tBackArm,NULL,&pos,armAngle+isBiting*50,&armCenter,SDL_FLIP_NONE);
+        SDL_RenderCopy(ren,tBackFlagArm,NULL,&pos);
         SDL_RenderCopyEx(ren,tBackLeg,NULL,&pos,legAngle,NULL,SDL_FLIP_NONE);
         SDL_RenderCopyEx(ren,tFrontLeg,NULL,&pos,-legAngle,NULL,SDL_FLIP_NONE);
         SDL_RenderCopy(ren,tBody,NULL,&pos);

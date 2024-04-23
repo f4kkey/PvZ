@@ -64,7 +64,16 @@ void board::levelProgess(int num)
         //20000;
         if(SDL_GetTicks()-preWave>=1000||(curWave!=0&&checkEmpty()))
         {
-            if(curWave ==level[num].size()-1&&(!finalWave)) finalWave=1,finalWaveStartTime=SDL_GetTicks();
+            if(curWave ==level[num].size()-1&&(!finalWave))
+            {
+                finalWave=1,finalWaveStartTime=SDL_GetTicks();
+                for(int i=0;i<5;i++)
+                {
+                    Z=new flagZombie;
+                    Z->spawn(i);
+                    z[i].push_back(Z);
+                }
+            }
             spawn(level[num][curWave]);
             curWave++;
             preWave=SDL_GetTicks();
@@ -77,11 +86,12 @@ void board::spawn(int num)
     srand(time(0));
     while(num>0)
     {
-        int val=rand()%min(num,3)+1;
+        int val=rand()%min(num,4)+1;
         int lane=rand()%5;
-        if(val==1)  Z= new basicZombie;
+        if(val==1) Z= new basicZombie;
+        if(val==3) val--;
         if(val==2) Z= new coneZombie;
-        if(val==3) Z=new bucketZombie;
+        if(val==4) Z=new bucketZombie;
         Z->spawn(lane);
         z[lane].push_back(Z);
         num-=val;

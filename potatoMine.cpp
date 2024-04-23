@@ -8,7 +8,6 @@ potatoMine::potatoMine()
     pos.w=100;
     pos.h=120;
     fireSpeed=15000;
-    fireTime=preFireTime=0;
     damage=1800;
     sprite.x=0;
     sprite.y=40;
@@ -65,6 +64,10 @@ void potatoMine::move()
                 }
             }
         }
-
     }
+}
+void potatoMine::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    preFireTime=SDL_GetTicks();
 }

@@ -5,13 +5,12 @@ repeater::repeater()
     price=200;
     live=1;
     health=300;
-    fireSpeed=2000;
-    tmpFireSpeed[0]=2000;
-    tmpFireSpeed[1]=500;
+    fireSpeed=1425;
+    tmpFireSpeed[0]=1425;
+    tmpFireSpeed[1]=200;
     type=0;
     pos.w=100;
     pos.h=120;
-    fireTime=preFireTime=0;
     recharge=7500;
 }
 void repeater::render()
@@ -47,4 +46,9 @@ void repeater::move()
 
         }
     }
+}
+void repeater::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    preFireTime=SDL_GetTicks();
 }

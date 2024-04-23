@@ -5,10 +5,9 @@ sunFlower::sunFlower()
     price=50;
     live=1;
     health=300;
-    fireSpeed=20000;
+    fireSpeed=24000;
     pos.w=100;
     pos.h=120;
-    fireTime=preFireTime=0;
     recharge=7500;
 }
 void sunFlower::render()
@@ -36,3 +35,9 @@ void sunFlower::move()
         preFireTime=fireTime;
     }
 }
+void sunFlower::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    preFireTime=SDL_GetTicks()-19000;
+}
+

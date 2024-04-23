@@ -52,6 +52,8 @@
 		<Unit filename="cherryBomb.h" />
 		<Unit filename="coneZombie.cpp" />
 		<Unit filename="coneZombie.h" />
+		<Unit filename="flagZombie.cpp" />
+		<Unit filename="flagZombie.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="lawnmover.cpp" />

@@ -8,7 +8,6 @@ cherryBomb::cherryBomb()
     pos.w=100;
     pos.h=120;
     fireSpeed=1200;
-    fireTime=preFireTime=0;
     damage=1800;
     recharge=50000;
 }
@@ -28,6 +27,7 @@ void cherryBomb::render()
 void cherryBomb::move()
 {
     fireTime=SDL_GetTicks();
+//    cout<<fireTime<<" "<<preFireTime<<"\n";
     if(fireTime-preFireTime>=fireSpeed)
     {
         live=0;
@@ -81,5 +81,9 @@ void cherryBomb::move()
             }
         }
     }
-
+}
+void cherryBomb::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    preFireTime=SDL_GetTicks();
 }

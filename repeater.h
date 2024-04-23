@@ -8,6 +8,7 @@ class repeater:public plant
         repeater();
         void render();
         void move();
+        void spawn(int i,int j);
     private:
         pea *bullet;
         int tmpFireSpeed[2];

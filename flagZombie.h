@@ -1,10 +1,10 @@
 #pragma once
 #include "all.h"
 #include "zombie.h"
-class basicZombie:public zombie
+class flagZombie:public zombie
 {
     public:
-        basicZombie();
+        flagZombie();
         void render();
     private:
 };
