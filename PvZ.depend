@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1713877227 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
+1714203003 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.cpp
 	"all.h"
 
-1713876900 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
+1714203575 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\all.h
 	<bits/stdc++.h>
 	<SDL.h>
 	"SDL_image.h"
 	"SDL_ttf.h"
+	"SDL_mixer.h"
 
 1698944750 c:\users\dell\documents\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -415,7 +416,7 @@
 	"board.h"
 	"level.h"
 
-1713876968 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
+1714203147 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\game.cpp
 	"game.h"
 
 1711966974 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\guy.cpp
@@ -441,10 +442,10 @@
 	"pea.h"
 	"plant.h"
 
-1713879967 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
+1714202740 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
 	"board.h"
 
-1713877912 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
+1714202316 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
 	"all.h"
 	"zombie.h"
 	"basicZombie.h"
@@ -456,13 +457,14 @@
 	"bucketZombie.h"
 	"flagZombie.h"
 
-1713794460 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
+1714203085 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
 	"zombie.h"
+	"board.h"
 
 1713880153 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.h
 	"all.h"
 
-1713745806 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\pea.cpp
+1714202704 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\pea.cpp
 	"pea.h"
 	"board.h"
 
@@ -471,7 +473,7 @@
 
 1712108520 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\mouse.cpp
 
-1713878798 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
+1714202763 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
 	"shop.h"
 	"board.h"
 
@@ -490,7 +492,7 @@
 1712321949 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.h
 	"all.h"
 
-1713878647 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
+1714030816 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
 	"sun.h"
 
 1713880063 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.h
@@ -586,7 +588,16 @@
 	"all.h"
 	"zombie.h"
 
-1713880249 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\flagzombie.cpp
+1713881278 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\flagzombie.cpp
 	"bucketZombie.h"
 	"board.h"
+
+1705857752 c:\users\dell\documents\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
 

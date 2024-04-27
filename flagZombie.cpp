@@ -3,7 +3,7 @@
 flagZombie::flagZombie()
 {
     health=1281;
-    walkSpeed=40;
+    walkSpeed=20;
 }
 void flagZombie::render()
 {

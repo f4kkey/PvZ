@@ -3,6 +3,7 @@
 #include<SDL.h>
 #include "SDL_image.h"
 #include "SDL_ttf.h"
+#include "SDL_mixer.h"
 using namespace std;
 
 const int SCREEN_HEIGHT=800;
@@ -21,6 +22,10 @@ extern SDL_Texture *tLawnmover;
 extern SDL_Texture *tBlank;
 extern SDL_Texture *tFinalWave;
 extern SDL_Texture *tLevel;
+extern SDL_Texture *tLose;
+extern int mousePosX,mousePosY;
+extern TTF_Font *font;
+extern Mix_Chunk *mPlant;
 
 extern SDL_Texture *tPeashooter;
 extern SDL_Texture *tSunFlower;
@@ -28,6 +33,7 @@ extern SDL_Texture *tWallnut;
 extern SDL_Texture *tCherryBomb;
 extern SDL_Texture *tPotatoMine;
 extern SDL_Texture *tRepeater;
+extern Mix_Chunk *mSplat;
 
 extern SDL_Texture *tHead;
 extern SDL_Texture *tBody;
@@ -42,8 +48,10 @@ extern SDL_Texture *tCone3;
 extern SDL_Texture *tBucket;
 extern SDL_Texture *tBucket2;
 extern SDL_Texture *tBucket3;
-extern int mousePosX,mousePosY;
-extern TTF_Font *font;
+extern Mix_Chunk *mEat;
+extern Mix_Chunk *mSwallow;
+
+
 bool collision(SDL_Rect A,SDL_Rect B);
 
 

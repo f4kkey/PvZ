@@ -23,7 +23,9 @@ class board
         void render();
         bool checkEmpty();
         void spawn(int num);
+        int endGame();
 
+        static int state;
         static SDL_Rect pos[9][5];
         static bool exist[9][5];
         static vector<zombie*> z[5];
@@ -42,6 +44,4 @@ class board
         bool finalWave;
         int finalWaveStartTime;
         SDL_Rect finalWaveRect;
-        bool lose;
-
 };

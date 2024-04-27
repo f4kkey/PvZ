@@ -28,7 +28,9 @@ board::board()
     preWave=0;
     curWave=0;
     finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
+    state=0;
 }
+int board::state=0;
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
 vector<zombie*> board::z[5];
@@ -170,11 +172,13 @@ void board::render()
     }
     s.render();
     if(finalWave&&SDL_GetTicks()-finalWaveStartTime<=3000) SDL_RenderCopy(ren,tFinalWave,NULL,&finalWaveRect);
-
 }
 bool board::checkEmpty()
 {
     for(int i=0;i<5;i++) if(z[i].size()) return 0;
     return 1;
 }
-
+int board::endGame()
+{
+    return state;
+}

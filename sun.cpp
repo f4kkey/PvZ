@@ -6,7 +6,7 @@ sun::sun()
     fallSpeed=3;
 
     endTime=curTime=0;;
-    duration=6000;
+    duration=5000;
     live=1;
 }
 SDL_Rect sun::getPos()

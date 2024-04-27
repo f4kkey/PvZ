@@ -36,7 +36,7 @@ shop::shop()
 void shop::reset()
 {
     //20000
-    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-60000);
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
     preSunSpawnTime=SDL_GetTicks()-5000;
     totalSun=500;
     for(auto &tmp:s) delete tmp;
@@ -64,12 +64,6 @@ void shop::event(SDL_Event e)
         sun *tmp=s[i];
         int val=s[i]->event(e);
         if(val) totalSun+=val;
-        if(!tmp->alive())
-        {
-            s.erase(s.begin()+i);
-            delete tmp;
-            i--;
-        }
     }
 
     if(e.type==SDL_MOUSEBUTTONDOWN)
@@ -132,6 +126,16 @@ void shop::update()
     {
         tmp->move();
     }
+    for(int i=0;i<s.size();i++)
+    {
+        sun *tmp=s[i];
+        if(!tmp->alive())
+        {
+            s.erase(s.begin()+i);
+            delete tmp;
+            i--;
+        }
+    }
 }
 void shop::render()
 {
@@ -157,4 +161,5 @@ void shop::placePlant(int column,int row)
     cursor->spawn(column,row);
     board::p[row].push_back(cursor);
     p[pickVal-1]->setPlantTime(SDL_GetTicks());
+    Mix_PlayChannel(-1,mPlant,0);
 }

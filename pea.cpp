@@ -26,11 +26,7 @@ void pea::move()
         {
             tmp->takeDamage(damage);
             live=0;
-//            if(!tmp->alive())
-//            {
-//                delete tmp;
-//                board::z[row].erase(board::z[row].begin()+j);
-//            }
+            Mix_PlayChannel(-1,mSplat,0);
             break;
         }
     }

@@ -41,6 +41,7 @@ void zombie::move()
                     delete tmp;
                     board::p[row].erase(board::p[row].begin()+j);
                     isBiting=0;
+                    Mix_PlayChannel(-1,mSwallow,0);
                 }
                 legAngle=0;
                 break;
@@ -60,6 +61,7 @@ void zombie::move()
                 armAngle+=vArm;
                 pos.y=board::pos[0][row].y+TILE_HEIGHT-pos.h;
                 pos.x-=v;
+                if(pos.x+pos.w<0) board::state=1;
             }
             else
             {
@@ -108,6 +110,7 @@ int zombie::bite()
     if(biteTime-preBiteTime>=biteSpeed)
     {
         preBiteTime=biteTime;
+        Mix_PlayChannel(-1,mEat,0);
         return damage;
     }
     return 0;
