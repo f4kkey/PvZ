@@ -13,7 +13,7 @@ void game::init()
 //    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,4,2048);
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,5,2048);
 }
 void game::loadResources()
 {
@@ -29,7 +29,7 @@ void game::loadResources()
     tFinalWave=loadIMG("resources/others/finalwave.png");
     tLevel=loadIMG("resources/others/levelmenu.png");
     tLose=loadIMG("resources/others/lose.png");
-    mPlant=Mix_LoadWAV("resources/others/plantSound.ogg");
+
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
     tSunFlower=loadIMG("resources/plants/sunflower.png");
@@ -37,7 +37,7 @@ void game::loadResources()
     tCherryBomb=loadIMG("resources/plants/cherrybomb.png");
     tPotatoMine=loadIMG("resources/plants/potatomine.png");
     tRepeater=loadIMG("resources/plants/repeater.png");
-    mSplat=Mix_LoadWAV("resources/plants/splatSound.ogg");
+
 
     tHead=loadIMG("resources/zombies/head.png");
     tBody=loadIMG("resources/zombies/body.png");
@@ -52,8 +52,12 @@ void game::loadResources()
     tBucket=loadIMG("resources/zombies/bucket.png");
     tBucket2=loadIMG("resources/zombies/bucket2.png");
     tBucket3=loadIMG("resources/zombies/bucket3.png");
-    mEat=Mix_LoadWAV("resources/zombies/eatSound.ogg");
-    mSwallow=Mix_LoadWAV("resources/zombies/swallowSound.ogg");
+
+    mEat=Mix_LoadWAV("resources/sounds/eatSound.ogg");
+    mSwallow=Mix_LoadWAV("resources/sounds/swallowSound.ogg");
+    mPlant=Mix_LoadWAV("resources/sounds/plantSound.ogg");
+    mSplat=Mix_LoadWAV("resources/sounds/splatSound.ogg");
+    mSun=Mix_LoadWAV("resources/sounds/sunPickedSound.ogg");
 }
 void game::event()
 {

@@ -4,6 +4,7 @@ flagZombie::flagZombie()
 {
     health=1281;
     walkSpeed=20;
+    biteSpeed=300;
 }
 void flagZombie::render()
 {

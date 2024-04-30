@@ -8,7 +8,7 @@ SDL_Texture *tLevel=NULL;
 SDL_Texture *tLose=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
-Mix_Chunk *mPlant=NULL;
+
 
 SDL_Texture *tPeashooter=NULL;
 SDL_Texture *tSunFlower=NULL;
@@ -19,7 +19,7 @@ SDL_Texture *tWallnut=NULL;
 SDL_Texture *tCherryBomb=NULL;
 SDL_Texture *tPotatoMine=NULL;
 SDL_Texture *tRepeater=NULL;
-Mix_Chunk *mSplat=NULL;
+
 
 SDL_Texture *tHead=NULL;
 SDL_Texture *tBody=NULL;
@@ -34,8 +34,12 @@ SDL_Texture *tCone3=NULL;
 SDL_Texture *tBucket=NULL;
 SDL_Texture *tBucket2=NULL;
 SDL_Texture *tBucket3=NULL;
+
 Mix_Chunk *mEat=NULL;
 Mix_Chunk *mSwallow=NULL;
+Mix_Chunk *mPlant=NULL;
+Mix_Chunk *mSplat=NULL;
+Mix_Chunk *mSun=NULL;
 
 SDL_Texture* loadIMG( const char* s)
 {

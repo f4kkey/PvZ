@@ -15,6 +15,7 @@ potatoMine::potatoMine()
     sprite.h=80;
     v=2;
     recharge=30000;
+    fireTime=preFireTime=0;
 }
 void potatoMine::render()
 {
@@ -22,6 +23,7 @@ void potatoMine::render()
     SDL_RenderCopy(ren,tPotatoMine,&sprite,&pos);
     if(!column)
     {
+
         if(SDL_GetTicks()-prePlantTime<recharge)
         {
             rechargeRect=pos;

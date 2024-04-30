@@ -42,6 +42,7 @@ int sun::event(SDL_Event e)
         if(x>=pos.x&&x<=pos.x+pos.w&&y>=pos.y&&y<=pos.y+pos.h)
         {
             live=0;
+            Mix_PlayChannel(-1,mSun,0);
             return value;
         }
     }
