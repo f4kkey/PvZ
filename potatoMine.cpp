@@ -43,6 +43,8 @@ void potatoMine::move()
             {
                 live=0;
                 board::exist[column][row]=0;
+                Mix_PlayChannel(-1,mPotatoMine,0);
+                break;
             }
         }
         if(!live)

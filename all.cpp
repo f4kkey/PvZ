@@ -40,6 +40,9 @@ Mix_Chunk *mSwallow=NULL;
 Mix_Chunk *mPlant=NULL;
 Mix_Chunk *mSplat=NULL;
 Mix_Chunk *mSun=NULL;
+Mix_Chunk *mPotatoMine=NULL;
+Mix_Chunk *mCherryBomb=NULL;
+Mix_Chunk *mFirstWave=NULL;
 
 SDL_Texture* loadIMG( const char* s)
 {

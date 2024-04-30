@@ -13,7 +13,7 @@ void game::init()
 //    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,5,2048);
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,7,2048);
 }
 void game::loadResources()
 {
@@ -58,6 +58,9 @@ void game::loadResources()
     mPlant=Mix_LoadWAV("resources/sounds/plantSound.ogg");
     mSplat=Mix_LoadWAV("resources/sounds/splatSound.ogg");
     mSun=Mix_LoadWAV("resources/sounds/sunPickedSound.ogg");
+    mPotatoMine=Mix_LoadWAV("resources/sounds/potatomine.ogg");
+    mCherryBomb=Mix_LoadWAV("resources/sounds/cherrybomb.ogg");
+    mFirstWave=Mix_LoadWAV("resources/sounds/firstWave.mp3");
 }
 void game::event()
 {
@@ -84,7 +87,7 @@ void game::event()
             {
                 int x,y;
                 SDL_GetMouseState(&x,&y);
-                if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=100&&y>=0)
+                if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=150&&y>=0)
                 {
                     ingame=0;
                 }

@@ -30,6 +30,7 @@ void cherryBomb::move()
 //    cout<<fireTime<<" "<<preFireTime<<"\n";
     if(fireTime-preFireTime>=fireSpeed)
     {
+        Mix_PlayChannel(-1,mCherryBomb,0);
         live=0;
         board::exist[column][row]=0;
         radius.x = board::pos[column][row].x-TILE_WIDTH;

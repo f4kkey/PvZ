@@ -66,6 +66,7 @@ void board::levelProgess(int num)
         //20000;
         if(SDL_GetTicks()-preWave>=1000||(curWave!=0&&checkEmpty()))
         {
+            if(curWave==0) Mix_PlayChannel(-1,mFirstWave,0);
             if(curWave ==level[num].size()-1&&(!finalWave))
             {
                 finalWave=1,finalWaveStartTime=SDL_GetTicks();
