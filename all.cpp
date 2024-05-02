@@ -43,6 +43,10 @@ Mix_Chunk *mSun=NULL;
 Mix_Chunk *mPotatoMine=NULL;
 Mix_Chunk *mCherryBomb=NULL;
 Mix_Chunk *mFirstWave=NULL;
+Mix_Chunk *mSeedPacket=NULL;
+Mix_Chunk *mWave=NULL;
+Mix_Music *mInGame=NULL;
+Mix_Music *mMenu=NULL;
 
 SDL_Texture* loadIMG( const char* s)
 {

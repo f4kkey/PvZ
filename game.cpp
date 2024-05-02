@@ -13,7 +13,7 @@ void game::init()
 //    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,7,2048);
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,12,2048);
 }
 void game::loadResources()
 {
@@ -61,6 +61,10 @@ void game::loadResources()
     mPotatoMine=Mix_LoadWAV("resources/sounds/potatomine.ogg");
     mCherryBomb=Mix_LoadWAV("resources/sounds/cherrybomb.ogg");
     mFirstWave=Mix_LoadWAV("resources/sounds/firstWave.mp3");
+    mSeedPacket=Mix_LoadWAV("resources/sounds/seedPacket.mp3");
+    mWave=Mix_LoadWAV("resources/sounds/wave.mp3");
+    mInGame=Mix_LoadMUS("resources/sounds/ingame.ogg");
+    mMenu=Mix_LoadMUS("resources/sounds/menu.ogg");
 }
 void game::event()
 {
@@ -79,7 +83,12 @@ void game::event()
         {
             lv.event(e);
             ingame=lv.getVal();
-            if(ingame) b.reset();
+            if(ingame)
+            {
+                Mix_HaltMusic();
+                Mix_PlayMusic(mInGame,-1);
+                b.reset();
+            }
         }
         else
         {
@@ -90,6 +99,8 @@ void game::event()
                 if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=150&&y>=0)
                 {
                     ingame=0;
+                    Mix_HaltMusic();
+                    Mix_PlayMusic(mMenu,-1);
                 }
                 b.event(e);
             }

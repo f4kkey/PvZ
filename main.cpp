@@ -6,6 +6,7 @@ int main(int agrv,char *argc[])
 
     G.init();
     G.loadResources();
+    Mix_PlayMusic(mMenu,-1);
     while(G.getGameState())
     {
         G.event();

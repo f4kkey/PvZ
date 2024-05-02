@@ -36,9 +36,9 @@ shop::shop()
 void shop::reset()
 {
     //20000
-    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-60000);
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
     preSunSpawnTime=SDL_GetTicks()-5000;
-    totalSun=500;
+    totalSun=50;
     for(auto &tmp:s) delete tmp;
     s.clear();
 }
@@ -76,7 +76,7 @@ void shop::event(SDL_Event e)
                 if(inside(mousePosX,mousePosY,seedPos[i+1])&&totalSun>=p[i]->getPrice()&&p[i]->plantable())
                 {
                     SDL_ShowCursor(SDL_DISABLE),pickVal=i+1;
-                    Mix_PlayChannel(-1,mPlant,0);
+                    Mix_PlayChannel(-1,mSeedPacket,0);
                 }
             }
             if(pickVal==1) cursor=new peashooter;

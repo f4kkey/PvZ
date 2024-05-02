@@ -56,6 +56,10 @@ extern Mix_Chunk *mSun;
 extern Mix_Chunk *mPotatoMine;
 extern Mix_Chunk *mCherryBomb;
 extern Mix_Chunk *mFirstWave;
+extern Mix_Chunk *mSeedPacket;
+extern Mix_Chunk *mWave;
+extern Mix_Music *mInGame;
+extern Mix_Music *mMenu;
 
 bool collision(SDL_Rect A,SDL_Rect B);
 
