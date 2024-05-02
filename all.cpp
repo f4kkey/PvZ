@@ -6,6 +6,7 @@ SDL_Texture *tBlank=NULL;
 SDL_Texture *tFinalWave=NULL;
 SDL_Texture *tLevel=NULL;
 SDL_Texture *tLose=NULL;
+SDL_Texture *tWin=NULL;
 TTF_Font *font=NULL;
 int mousePosX,mousePosY;
 

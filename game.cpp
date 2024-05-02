@@ -13,7 +13,7 @@ void game::init()
 //    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,12,2048);
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,8,2048);
 }
 void game::loadResources()
 {
@@ -29,6 +29,7 @@ void game::loadResources()
     tFinalWave=loadIMG("resources/others/finalwave.png");
     tLevel=loadIMG("resources/others/levelmenu.png");
     tLose=loadIMG("resources/others/lose.png");
+    tWin=loadIMG("resources/others/win.png");
 
 
     tPeashooter=loadIMG("resources/plants/peashooter.png");
@@ -92,18 +93,26 @@ void game::event()
         }
         else
         {
-            if(e.type==SDL_MOUSEBUTTONDOWN)
+            if(!b.endGame())
             {
-                int x,y;
-                SDL_GetMouseState(&x,&y);
-                if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=150&&y>=0)
+                if(e.type==SDL_MOUSEBUTTONDOWN)
                 {
-                    ingame=0;
-                    Mix_HaltMusic();
-                    Mix_PlayMusic(mMenu,-1);
+                    int x,y;
+                    SDL_GetMouseState(&x,&y);
+                    if(x>=SCREEN_WIDTH-240&&x<=SCREEN_WIDTH&&y<=150&&y>=0)
+                    {
+                        ingame=0;
+                        Mix_HaltMusic();
+                        Mix_PlayMusic(mMenu,-1);
+                    }
+                    b.event(e);
                 }
-                b.event(e);
             }
+            else
+            {
+                if(e.type==SDL_MOUSEBUTTONDOWN) ingame=0;
+            }
+
         }
 
     }
@@ -126,7 +135,16 @@ void game::render()
     }
     else
     {
-        b.render();
+        if(!b.endGame) b.render();
+        else if(b.endGame()==1)
+        {
+            SDL_RenderCopy(ren,tLose,NULL,NULL);
+        }
+        else
+        {
+            SDL_RenderCopy(ren,tWin,NULL,NULL);
+        }
+
     }
     SDL_RenderPresent(ren);
 }

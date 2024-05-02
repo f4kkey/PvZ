@@ -12,7 +12,7 @@ board::board()
         }
         x+=TILE_WIDTH;
     }
-    for(int row=0;row<5;row++) l[row]=new lawnmover,l[row]->setRow(row);
+    for(int row=0;row<5;row++) l[row]=new lawnmover;
     levelFile.open("resources/others/level.txt");
     int curLevel=0,totalWave,wave;
     while(!levelFile.eof())
@@ -28,9 +28,8 @@ board::board()
     preWave=0;
     curWave=0;
     finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
-    state=0;
 }
-int board::state=0;
+int board::state=1;
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
 vector<zombie*> board::z[5];
@@ -52,8 +51,9 @@ void board::reset()
     curWave=0;
     preWave=SDL_GetTicks();
     finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
-    for(int row=0;row<5;row++) l[row]->reset();
+    for(int row=0;row<5;row++) l[row]->reset(row);
     s.reset();
+    state=1;
 }
 void board::loadTexture(const char* s)
 {
@@ -182,5 +182,5 @@ bool board::checkEmpty()
 }
 int board::endGame()
 {
-    return state;
+    return 1-state;
 }

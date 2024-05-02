@@ -8,15 +8,12 @@ lawnmover::lawnmover()
     pos.h=100;
     pos.w=100;
 }
-void lawnmover::reset()
-{
-    used=0;
-    pos.x=-50;
-}
-void lawnmover::setRow(int i)
+void lawnmover::reset(int i)
 {
     row=i;
     pos.y=board::pos[0][i].y;
+    used=0;
+    pos.x=-50;
 }
 void lawnmover::move()
 {

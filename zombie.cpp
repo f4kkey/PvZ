@@ -3,7 +3,7 @@
 zombie::zombie()
 {
     damage=50;
-    v=1;
+    v=100;
     live=1;
     val=1;
     walkSpeed=65;
@@ -61,7 +61,7 @@ void zombie::move()
                 armAngle+=vArm;
                 pos.y=board::pos[0][row].y+TILE_HEIGHT-pos.h;
                 pos.x-=v;
-                if(pos.x+pos.w<0) board::state=1;
+                if(pos.x+pos.w<0) board::state=0;
             }
             else
             {

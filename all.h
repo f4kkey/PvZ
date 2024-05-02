@@ -23,6 +23,7 @@ extern SDL_Texture *tBlank;
 extern SDL_Texture *tFinalWave;
 extern SDL_Texture *tLevel;
 extern SDL_Texture *tLose;
+extern SDL_Texture *tWin;
 extern int mousePosX,mousePosY;
 extern TTF_Font *font;
 
