@@ -20,7 +20,7 @@ potatoMine::potatoMine()
 void potatoMine::render()
 {
     if(fireTime-preFireTime>=fireSpeed&&sprite.h<100) sprite.h+=v,sprite.y+=v;
-    SDL_RenderCopy(ren,tPotatoMine,&sprite,&pos);
+    SDL_RenderCopy(ren,tPlant[4],&sprite,&pos);
     if(!column)
     {
 

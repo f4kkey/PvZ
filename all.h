@@ -27,12 +27,7 @@ extern SDL_Texture *tWin;
 extern int mousePosX,mousePosY;
 extern TTF_Font *font;
 
-extern SDL_Texture *tPeashooter;
-extern SDL_Texture *tSunFlower;
-extern SDL_Texture *tWallnut;
-extern SDL_Texture *tCherryBomb;
-extern SDL_Texture *tPotatoMine;
-extern SDL_Texture *tRepeater;
+extern SDL_Texture *tPlant[7];
 
 
 extern SDL_Texture *tHead;

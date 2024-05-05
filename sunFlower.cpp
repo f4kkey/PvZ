@@ -12,7 +12,7 @@ sunFlower::sunFlower()
 }
 void sunFlower::render()
 {
-    SDL_RenderCopy(ren,tSunFlower,NULL,&pos);
+    SDL_RenderCopy(ren,tPlant[1],NULL,&pos);
     if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)

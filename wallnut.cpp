@@ -17,9 +17,9 @@ wallnut::wallnut()
 }
 void wallnut::render()
 {
-    if(health>=2500) SDL_RenderCopy(ren,tWallnut,&sprite[0],&pos);
-    else if(health>=1500) SDL_RenderCopy(ren,tWallnut,&sprite[1],&pos);
-    else SDL_RenderCopy(ren,tWallnut,&sprite[2],&pos);
+    if(health>=2500) SDL_RenderCopy(ren,tPlant[2],&sprite[0],&pos);
+    else if(health>=1500) SDL_RenderCopy(ren,tPlant[2],&sprite[1],&pos);
+    else SDL_RenderCopy(ren,tPlant[2],&sprite[2],&pos);
     if(!column)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)

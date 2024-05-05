@@ -8,18 +8,12 @@ SDL_Texture *tLevel=NULL;
 SDL_Texture *tLose=NULL;
 SDL_Texture *tWin=NULL;
 TTF_Font *font=NULL;
-int mousePosX,mousePosY;
-
-
-SDL_Texture *tPeashooter=NULL;
-SDL_Texture *tSunFlower=NULL;
 SDL_Texture *tShovel=NULL;
 SDL_Texture *tSun=NULL;
 SDL_Texture *tLawnmover=NULL;
-SDL_Texture *tWallnut=NULL;
-SDL_Texture *tCherryBomb=NULL;
-SDL_Texture *tPotatoMine=NULL;
-SDL_Texture *tRepeater=NULL;
+int mousePosX,mousePosY;
+
+SDL_Texture *tPlant[7];
 
 
 SDL_Texture *tHead=NULL;

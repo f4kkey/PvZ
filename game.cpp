@@ -30,14 +30,12 @@ void game::loadResources()
     tLose=loadIMG("resources/others/lose.png");
     tWin=loadIMG("resources/others/win.png");
 
-
-    tPeashooter=loadIMG("resources/plants/peashooter.png");
-    tSunFlower=loadIMG("resources/plants/sunflower.png");
-    tWallnut=loadIMG("resources/plants/wallnut.png");
-    tCherryBomb=loadIMG("resources/plants/cherrybomb.png");
-    tPotatoMine=loadIMG("resources/plants/potatomine.png");
-    tRepeater=loadIMG("resources/plants/repeater.png");
-
+    tPlant[0]=loadIMG("resources/plants/peashooter.png");
+    tPlant[1]=loadIMG("resources/plants/sunflower.png");
+    tPlant[2]=loadIMG("resources/plants/wallnut.png");
+    tPlant[3]=loadIMG("resources/plants/cherrybomb.png");
+    tPlant[4]=loadIMG("resources/plants/potatomine.png");
+    tPlant[5]=loadIMG("resources/plants/repeater.png");
 
     tHead=loadIMG("resources/zombies/head.png");
     tBody=loadIMG("resources/zombies/body.png");
