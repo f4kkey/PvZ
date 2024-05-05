@@ -98,9 +98,7 @@ void shop::event(SDL_Event e)
                     {
                         if(inside(mousePosX,mousePosY,board::pos[i][j]))
                         {
-                            if(pickVal>=1&&pickVal<=6) placePlant(i,j);
-                            if(pickVal==7) board::exist[i][j]=0;
-                            Mix_PlayChannel(-1,mPlant,0);
+                            placePlant(i,j,pickVal);
                         }
                     }
                 }
@@ -156,11 +154,20 @@ void shop::render()
         cursor->render();
     }
 }
-void shop::placePlant(int column,int row)
+void shop::placePlant(int column,int row,int val)
 {
-    if(board::exist[column][row]) return;
-    totalSun-=cursor->getPrice();
-    cursor->spawn(column,row);
-    board::p[row].push_back(cursor);
-    p[pickVal-1]->setPlantTime(SDL_GetTicks());
+    if(pickVal>=1&&pickVal<=6)
+    {
+        if(board::exist[column][row]) return;
+        totalSun-=cursor->getPrice();
+        cursor->spawn(column,row);
+        board::p[row].push_back(cursor);
+        p[pickVal-1]->setPlantTime(SDL_GetTicks());
+        Mix_PlayChannel(-1,mPlant,0);
+    }
+    else
+    {
+        if(board::exist[column][row]) Mix_PlayChannel(-1,mPlant,0);
+        board::exist[column][row]=0;
+    }
 }

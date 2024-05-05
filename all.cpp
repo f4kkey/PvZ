@@ -48,6 +48,8 @@ Mix_Chunk *mSeedPacket=NULL;
 Mix_Chunk *mWave=NULL;
 Mix_Music *mInGame=NULL;
 Mix_Music *mMenu=NULL;
+Mix_Music *mWin=NULL;
+Mix_Music *mLose=NULL;
 
 SDL_Texture* loadIMG( const char* s)
 {
@@ -55,6 +57,7 @@ SDL_Texture* loadIMG( const char* s)
     tmpSurface=IMG_Load(s);
     SDL_Texture* tex =NULL;
     tex = SDL_CreateTextureFromSurface(ren,tmpSurface);
+    SDL_SetTextureBlendMode(tex,SDL_BLENDMODE_BLEND);
     SDL_FreeSurface(tmpSurface);
     return tex;
 }

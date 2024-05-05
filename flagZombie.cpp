@@ -2,7 +2,7 @@
 #include "board.h"
 flagZombie::flagZombie()
 {
-    health=1281;
+    health=1301;
     walkSpeed=20;
     biteSpeed=300;
 }

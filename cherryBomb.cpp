@@ -8,7 +8,7 @@ cherryBomb::cherryBomb()
     pos.w=100;
     pos.h=120;
     fireSpeed=1200;
-    damage=1800;
+    damage=1300;
     recharge=50000;
 }
 void cherryBomb::render()

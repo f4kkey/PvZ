@@ -42,6 +42,7 @@ class board
         int preWave;
         int curWave;
         bool finalWave;
+        bool playingBackgroundMusic;
         int finalWaveStartTime;
         SDL_Rect finalWaveRect;
 };

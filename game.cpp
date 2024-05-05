@@ -24,7 +24,6 @@ void game::loadResources()
     tLawnmover=loadIMG("resources/others/lawnmover.png");
     tPea=loadIMG("resources/others/pea.png");
     tBlank=loadIMG("resources/others/blank.png");
-    SDL_SetTextureBlendMode(tBlank,SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(tBlank,127);
     tFinalWave=loadIMG("resources/others/finalwave.png");
     tLevel=loadIMG("resources/others/levelmenu.png");
@@ -66,6 +65,8 @@ void game::loadResources()
     mWave=Mix_LoadWAV("resources/sounds/wave.mp3");
     mInGame=Mix_LoadMUS("resources/sounds/ingame.ogg");
     mMenu=Mix_LoadMUS("resources/sounds/menu.ogg");
+    mLose=Mix_LoadMUS("resources/sounds/lose.ogg");
+    mWin=Mix_LoadMUS("resources/sounds/win.ogg");
 }
 void game::event()
 {
@@ -110,13 +111,18 @@ void game::event()
             }
             else
             {
-                if(e.type==SDL_MOUSEBUTTONDOWN) ingame=0;
+                if(e.type==SDL_MOUSEBUTTONDOWN)
+                {
+                    ingame=0;
+                    Mix_HaltMusic();
+                    Mix_PlayMusic(mMenu,-1);
+                }
             }
 
         }
 
     }
-    if(ingame>0)
+    if(!b.endGame()&&ingame)
     {
         b.levelProgess(ingame-1);
         b.update();
@@ -135,7 +141,7 @@ void game::render()
     }
     else
     {
-        if(!b.endGame) b.render();
+        if(!b.endGame()) b.render();
         else if(b.endGame()==1)
         {
             SDL_RenderCopy(ren,tLose,NULL,NULL);

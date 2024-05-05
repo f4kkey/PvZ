@@ -29,7 +29,7 @@ board::board()
     curWave=0;
     finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
 }
-int board::state=1;
+int board::state=0;
 SDL_Rect board::pos[9][5];
 bool board::exist[9][5];
 vector<zombie*> board::z[5];
@@ -53,7 +53,8 @@ void board::reset()
     finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
     for(int row=0;row<5;row++) l[row]->reset(row);
     s.reset();
-    state=1;
+    state=0;
+    playingBackgroundMusic=1;
 }
 void board::loadTexture(const char* s)
 {
@@ -64,29 +65,37 @@ void board::levelProgess(int num)
     if(curWave<level[num].size() )
     {
         //20000;
-        if(SDL_GetTicks()-preWave>=2000||(curWave!=0&&checkEmpty()))
+        if(SDL_GetTicks()-preWave>=20000||(curWave!=0&&checkEmpty()))
         {
             if(curWave==0) Mix_PlayChannel(-1,mFirstWave,0);
             if(curWave ==level[num].size()-1&&(!finalWave))
             {
-                Mix_PlayChannel(-1,mWave,0);
                 finalWave=1,finalWaveStartTime=SDL_GetTicks();
-                for(int i=0;i<5;i++)
-                {
-                    Z=new flagZombie;
-                    Z->spawn(i);
-                    z[i].push_back(Z);
-                }
             }
             spawn(level[num][curWave]);
             curWave++;
             preWave=SDL_GetTicks();
         }
     }
+    else if(checkEmpty())
+    {
+        state=2;
+    }
 
 }
 void board::spawn(int num)
 {
+    if(num>=20)
+    {
+        Mix_PlayChannel(-1,mWave,0);
+        for(int i=0;i<5;i++)
+        {
+            Z=new flagZombie;
+            Z->spawn(i);
+            z[i].push_back(Z);
+        }
+        num-=20;
+    }
     srand(time(0));
     while(num>0)
     {
@@ -182,5 +191,12 @@ bool board::checkEmpty()
 }
 int board::endGame()
 {
-    return 1-state;
+    if(playingBackgroundMusic&&state)
+    {
+        playingBackgroundMusic=0;
+        Mix_HaltMusic();
+        if(state==1) Mix_PlayMusic(mLose,0);
+        else Mix_PlayMusic(mWin,0);
+    }
+    return state;
 }

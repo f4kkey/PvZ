@@ -18,7 +18,7 @@ class shop
         void event(SDL_Event e);
         void update();
         void render();
-        void placePlant(int column,int row);
+        void placePlant(int column,int row,int val);
         void renderText(int v,int i);
         static vector<sun*> s;
     private:

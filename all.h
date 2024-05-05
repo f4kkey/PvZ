@@ -61,6 +61,8 @@ extern Mix_Chunk *mSeedPacket;
 extern Mix_Chunk *mWave;
 extern Mix_Music *mInGame;
 extern Mix_Music *mMenu;
+extern Mix_Music *mWin;
+extern Mix_Music *mLose;
 
 bool collision(SDL_Rect A,SDL_Rect B);
 

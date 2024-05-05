@@ -8,7 +8,7 @@ potatoMine::potatoMine()
     pos.w=100;
     pos.h=120;
     fireSpeed=15000;
-    damage=1800;
+    damage=1300;
     sprite.x=0;
     sprite.y=40;
     sprite.w=100;
