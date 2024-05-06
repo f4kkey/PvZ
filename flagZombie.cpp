@@ -3,8 +3,8 @@
 flagZombie::flagZombie()
 {
     health=1301;
-    walkSpeed=20;
-    biteSpeed=300;
+    walkInterval=20;
+    biteInterval=300;
 }
 void flagZombie::render()
 {

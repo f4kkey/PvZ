@@ -6,11 +6,11 @@ zombie::zombie()
     v=1;
     live=1;
     val=1;
-    walkSpeed=65;
-    walkTime=preWalkTime=0;
-    biteSpeed=500;
+    walkInterval=65;
+    preWalkTime=0;
+    biteInterval=500;
     isBiting=0;
-    biteTime=preBiteTime=0;
+    preBiteTime=0;
     vFall=3;
     bottom={10,190};
     bodyAngle=0;
@@ -48,8 +48,7 @@ void zombie::move()
             }
         }
     }
-    walkTime=SDL_GetTicks();
-    if(walkTime-preWalkTime>=walkSpeed)
+    if(SDL_GetTicks()-preWalkTime>=walkInterval)
     {
         if(live)
         {
@@ -67,7 +66,6 @@ void zombie::move()
             {
                 if(armAngle>=10||armAngle<=-10) vArm=-vArm;
                 armAngle+=vArm;
-                preWalkTime=walkTime;
             }
         }
         else
@@ -75,7 +73,7 @@ void zombie::move()
             bodyAngle=max(bodyAngle-vFall,-90);
             if(SDL_GetTicks()-deadTime>3000) exist=0;
         }
-        preWalkTime=walkTime;
+        preWalkTime=SDL_GetTicks();
     }
 }
 SDL_Rect zombie::getPos()
@@ -106,10 +104,9 @@ bool zombie::alive()
 }
 int zombie::bite()
 {
-    biteTime=SDL_GetTicks();
-    if(biteTime-preBiteTime>=biteSpeed)
+    if(SDL_GetTicks()-preBiteTime>=biteInterval)
     {
-        preBiteTime=biteTime;
+        preBiteTime=SDL_GetTicks();
         Mix_PlayChannel(-1,mEat,0);
         return damage;
     }

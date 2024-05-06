@@ -8,7 +8,6 @@ class plant
         virtual void move();
         virtual void spawn(int i,int j);
         virtual void preRender(int val);
-        bool fire();
         SDL_Rect getPos();
         void takeDamage(int damageTaken);
         bool alive();
@@ -22,10 +21,10 @@ class plant
 
         int health;
         bool live;
-        int fireSpeed;
+        int fireInterval;
         SDL_Rect pos;
         int column,row;
-        int fireTime,preFireTime;
+        int preFireTime;
         int prePlantTime;
         int price;
         int recharge;

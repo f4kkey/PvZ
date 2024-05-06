@@ -5,7 +5,7 @@ cherryBomb::cherryBomb()
     price=150;
     live=1;
     health=999999999;
-    fireSpeed=1200;
+    fireInterval=1200;
     damage=1300;
     recharge=50000;
 }
@@ -24,9 +24,8 @@ void cherryBomb::render()
 }
 void cherryBomb::move()
 {
-    fireTime=SDL_GetTicks();
 //    cout<<fireTime<<" "<<preFireTime<<"\n";
-    if(fireTime-preFireTime>=fireSpeed)
+    if(SDL_GetTicks()-preFireTime>=fireInterval)
     {
         Mix_PlayChannel(-1,mCherryBomb,0);
         live=0;

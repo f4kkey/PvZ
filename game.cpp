@@ -95,7 +95,7 @@ void game::event()
         {
             lv.event(e);
             ingame=lv.getVal();
-            if(ingame)
+            if(ingame>0)
             {
                 Mix_HaltMusic();
                 Mix_PlayMusic(mInGame,-1);
@@ -149,7 +149,7 @@ void game::render()
     {
         lv.render();
     }
-    else
+    else if(ingame>0)
     {
         if(!b.endGame()) b.render();
         else if(b.endGame()==1)

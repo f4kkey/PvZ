@@ -20,8 +20,8 @@ class zombie
         SDL_Rect pos;
         int row;
         bool live,exist;
-        int walkTime,preWalkTime,walkSpeed;
-        int biteTime,preBiteTime,biteSpeed;
+        int preWalkTime,walkInterval;
+        int preBiteTime,biteInterval;
         int deadTime;
         bool isBiting;
         int val;

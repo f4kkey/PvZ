@@ -5,7 +5,7 @@ sunFlower::sunFlower()
     price=50;
     live=1;
     health=300;
-    fireSpeed=24000;
+    fireInterval=24000;
     pos.w=100;
     pos.h=120;
     recharge=7500;
@@ -25,14 +25,12 @@ void sunFlower::render()
 }
 void sunFlower::move()
 {
-    fireTime=SDL_GetTicks();
-    if(fireTime-preFireTime>=fireSpeed)
+    if(SDL_GetTicks()-preFireTime>=fireInterval)
     {
         s=new sun;
         s->spawn(pos.x-30,pos.y,50);
         s->setEndPos(pos.y+50);
         shop::s.push_back(s);
-        preFireTime=fireTime;
     }
 }
 void sunFlower::spawn(int i,int j)

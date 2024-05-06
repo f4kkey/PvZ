@@ -68,16 +68,6 @@ int plant::getRow()
 {
     return row;
 }
-bool plant::fire()
-{
-    fireTime=SDL_GetTicks();
-    if(fireTime-preFireTime>=fireSpeed)
-    {
-        preFireTime=fireTime;
-        return true;
-    }
-    return false;
-}
 void plant::takeDamage(int damageTaken)
 {
     health-=damageTaken;

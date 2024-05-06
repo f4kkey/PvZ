@@ -25,9 +25,7 @@ board::board()
         }
         curLevel++;
     }
-    preWave=0;
-    curWave=0;
-    finalWaveRect={-100,-100,SCREEN_WIDTH+200,SCREEN_HEIGHT+200};
+    reset();
 }
 int board::state=0;
 SDL_Rect board::pos[9][5];
@@ -65,7 +63,7 @@ void board::levelProgess(int num)
     if(curWave<level[num].size() )
     {
         //20000;
-        if(SDL_GetTicks()-preWave>=20000||(curWave!=0&&checkEmpty()))
+        if(SDL_GetTicks()-preWave>=2000||(curWave!=0&&checkEmpty()))
         {
             if(curWave==0) Mix_PlayChannel(-1,mFirstWave,0);
             if(curWave ==level[num].size()-1&&(!finalWave))

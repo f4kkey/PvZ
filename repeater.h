@@ -11,6 +11,6 @@ class repeater:public plant
         void spawn(int i,int j);
     private:
         pea *bullet;
-        int tmpFireSpeed[2];
+        int tmpFireInterval[2];
         int type;
 };

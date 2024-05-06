@@ -5,9 +5,9 @@ repeater::repeater()
     price=200;
     live=1;
     health=300;
-    fireSpeed=1425;
-    tmpFireSpeed[0]=1425;
-    tmpFireSpeed[1]=200;
+    fireInterval=1425;
+    tmpFireInterval[0]=1425;
+    tmpFireInterval[1]=200;
     type=0;
     recharge=7500;
 }
@@ -31,11 +31,10 @@ void repeater::move()
         SDL_Rect zomPos=tmp->getPos();
         if(pos.x+pos.w<=zomPos.x)
         {
-            fireTime=SDL_GetTicks();
-            if(fireTime-preFireTime>=tmpFireSpeed[type])
+            if(SDL_GetTicks()-preFireTime>=tmpFireInterval[type])
             {
                 type=1-type;
-                preFireTime=fireTime;
+                preFireTime=SDL_GetTicks();
                 bullet=new pea;
                 bullet->spawn(column,row);
                 board::pe[row].push_back(bullet);

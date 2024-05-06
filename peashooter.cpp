@@ -5,9 +5,8 @@ peashooter::peashooter()
     price=100;
     live=1;
     health=300;
-    fireSpeed=1425;
+    fireInterval=1425;
     recharge=7500;
-    fireTime=0;
 }
 void peashooter::render()
 {
@@ -29,10 +28,9 @@ void peashooter::move()
         SDL_Rect zomPos=tmp->getPos();
         if(pos.x+pos.w<=zomPos.x)
         {
-            fireTime=SDL_GetTicks();
-            if(fireTime-preFireTime>=fireSpeed)
+            if(SDL_GetTicks()-preFireTime>=fireInterval)
             {
-                preFireTime=fireTime;
+                preFireTime=SDL_GetTicks();
                 bullet=new pea;
                 bullet->spawn(column,row);
                 board::pe[row].push_back(bullet);

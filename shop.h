@@ -30,13 +30,6 @@ class shop
         sun* S;
         int pickVal;
         plant* cursor;
-        peashooter* ps;
-        sunFlower* sf;
-        wallnut* wn;
-        cherryBomb* cb;
-        potatoMine* pm;
-        repeater* rp;
-        shovel* sv;
-        SDL_Texture *price;
+        SDL_Texture *priceText;
         int textWidth,textHeight;
 };

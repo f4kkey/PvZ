@@ -14,20 +14,20 @@ shop::shop()
         seedPricePos[i].w=99;
         seedPricePos[i].h=30;
     }
-    ps=new peashooter;
-    p.push_back(ps);
-    sf=new sunFlower();
-    p.push_back(sf);
-    wn=new wallnut();
-    p.push_back(wn);
-    cb=new cherryBomb();
-    p.push_back(cb);
-    pm=new potatoMine();
-    p.push_back(pm);
-    rp=new repeater();
-    p.push_back(rp);
-    sv=new shovel();
-    p.push_back(sv);
+    cursor=new peashooter;
+    p.push_back(cursor);
+    cursor=new sunFlower();
+    p.push_back(cursor);
+    cursor=new wallnut();
+    p.push_back(cursor);
+    cursor=new cherryBomb();
+    p.push_back(cursor);
+    cursor=new potatoMine();
+    p.push_back(cursor);
+    cursor=new repeater();
+    p.push_back(cursor);
+    cursor=new shovel();
+    p.push_back(cursor);
     for(int i=0;i<7;i++) p[i]->setPos(seedPos[i+1].x,seedPos[i+1].y);
     cursor=new plant;
 
@@ -50,12 +50,12 @@ void shop::renderText(int v,int i)
     val<<v;
     SDL_Color color={0,0,0,255};
     SDL_Surface* tmpSurface=TTF_RenderText_Blended(font,val.str().c_str(),color);
-    price=SDL_CreateTextureFromSurface(ren,tmpSurface);
+    priceText=SDL_CreateTextureFromSurface(ren,tmpSurface);
     textWidth=tmpSurface->w;
     textHeight=tmpSurface->h;
     SDL_FreeSurface(tmpSurface);
     SDL_Rect tmp={seedPricePos[i].x+(seedPricePos[i].w-textWidth)/2,seedPricePos[i].y+(seedPricePos[i].h-textHeight)/2,textWidth,textHeight};
-    SDL_RenderCopy(ren,price,NULL,&tmp);
+    SDL_RenderCopy(ren,priceText,NULL,&tmp);
 }
 void shop::event(SDL_Event e)
 {
