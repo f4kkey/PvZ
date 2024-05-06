@@ -6,10 +6,13 @@
 #include "SDL_mixer.h"
 using namespace std;
 
-const int SCREEN_HEIGHT=800;
 const int SCREEN_WIDTH=1200;
-const int TILE_HEIGHT=100;
+const int SCREEN_HEIGHT=800;
 const int TILE_WIDTH=120;
+const int TILE_HEIGHT=100;
+const int PLANT_WIDTH=100;
+const int PLANT_HEIGHT=100;
+
 SDL_Texture* loadIMG(const char* s);
 bool inside(int x,int y,SDL_Rect rect);
 extern SDL_Window* window;
@@ -27,8 +30,8 @@ extern SDL_Texture *tWin;
 extern int mousePosX,mousePosY;
 extern TTF_Font *font;
 
-extern SDL_Texture *tPlant[7];
-
+extern SDL_Texture *tPlant[6];
+extern SDL_Texture *tPlant2[6];
 
 extern SDL_Texture *tHead;
 extern SDL_Texture *tBody;

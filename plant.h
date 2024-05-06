@@ -7,6 +7,7 @@ class plant
         virtual void render();
         virtual void move();
         virtual void spawn(int i,int j);
+        virtual void preRender(int val);
         bool fire();
         SDL_Rect getPos();
         void takeDamage(int damageTaken);

@@ -5,8 +5,6 @@ cherryBomb::cherryBomb()
     price=150;
     live=1;
     health=999999999;
-    pos.w=100;
-    pos.h=120;
     fireSpeed=1200;
     damage=1300;
     recharge=50000;

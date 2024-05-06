@@ -37,6 +37,18 @@ void game::loadResources()
     tPlant[4]=loadIMG("resources/plants/potatomine.png");
     tPlant[5]=loadIMG("resources/plants/repeater.png");
 
+    tPlant2[0]=loadIMG("resources/plants/peashooter.png");
+    tPlant2[1]=loadIMG("resources/plants/sunflower.png");
+    tPlant2[2]=loadIMG("resources/plants/wallnut.png");
+    tPlant2[3]=loadIMG("resources/plants/cherrybomb.png");
+    tPlant2[4]=loadIMG("resources/plants/potatomine.png");
+    tPlant2[5]=loadIMG("resources/plants/repeater.png");
+    for(int i=0;i<6;i++)
+    {
+//        *tPlant2[i]=*tPlant[i];
+        SDL_SetTextureAlphaMod(tPlant2[i],127);
+    }
+
     tHead=loadIMG("resources/zombies/head.png");
     tBody=loadIMG("resources/zombies/body.png");
     tBackLeg=loadIMG("resources/zombies/backleg.png");

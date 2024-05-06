@@ -6,8 +6,6 @@ peashooter::peashooter()
     live=1;
     health=300;
     fireSpeed=1425;
-    pos.w=100;
-    pos.h=120;
     recharge=7500;
     fireTime=0;
 }

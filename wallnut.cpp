@@ -1,11 +1,10 @@
 #include "wallnut.h"
+#include "board.h"
 wallnut::wallnut()
 {
     price=50;
     live=1;
     health=4000;
-    pos.w=100;
-    pos.h=120;
     for(int i=0;i<3;i++)
     {
         sprite[i].x=100*i-1;
@@ -33,4 +32,25 @@ void wallnut::render()
 void wallnut::move()
 {
 
+}
+void wallnut::preRender(int val)
+{
+    int x,y;
+    SDL_GetMouseState(&x,&y);
+    if(val>=0&&val<=5)
+    for(int i=0;i<9;i++)
+    {
+        for(int j=0;j<5;j++)
+        {
+            if(inside(x,y,board::pos[i][j]))
+            {
+                SDL_Rect tmp=board::pos[i][j];
+                tmp.x+=20;
+                tmp.y-=20;
+                tmp.w=PLANT_WIDTH;
+                tmp.h=PLANT_HEIGHT;
+                SDL_RenderCopy(ren,tPlant2[val],&sprite[0],&tmp);
+            }
+        }
+    }
 }

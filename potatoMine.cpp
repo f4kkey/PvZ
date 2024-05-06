@@ -5,8 +5,6 @@ potatoMine::potatoMine()
     price=25;
     live=1;
     health=300;
-    pos.w=100;
-    pos.h=120;
     fireSpeed=15000;
     damage=1300;
     sprite.x=0;

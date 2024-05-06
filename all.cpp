@@ -13,7 +13,8 @@ SDL_Texture *tSun=NULL;
 SDL_Texture *tLawnmover=NULL;
 int mousePosX,mousePosY;
 
-SDL_Texture *tPlant[7];
+SDL_Texture *tPlant[6];
+SDL_Texture *tPlant2[6];
 
 
 SDL_Texture *tHead=NULL;

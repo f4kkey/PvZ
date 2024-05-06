@@ -31,14 +31,14 @@ shop::shop()
     for(int i=0;i<7;i++) p[i]->setPos(seedPos[i+1].x,seedPos[i+1].y);
     cursor=new plant;
 
-    pickVal=0;
+    pickVal=-1;
 }
 void shop::reset()
 {
     //20000
-    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-60000);
     preSunSpawnTime=SDL_GetTicks()-5000;
-    totalSun=50;
+    totalSun=500;
     for(auto &tmp:s) delete tmp;
     s.clear();
 }
@@ -68,24 +68,24 @@ void shop::event(SDL_Event e)
 
     if(e.type==SDL_MOUSEBUTTONDOWN)
     {
-        if(!pickVal )
+        if(pickVal==-1 )
         {
             SDL_GetMouseState(&mousePosX,&mousePosY);
             for(int i=0;i<7;i++)
             {
                 if(inside(mousePosX,mousePosY,seedPos[i+1])&&totalSun>=p[i]->getPrice()&&p[i]->plantable())
                 {
-                    SDL_ShowCursor(SDL_DISABLE),pickVal=i+1;
+                    SDL_ShowCursor(SDL_DISABLE),pickVal=i;
                     Mix_PlayChannel(-1,mSeedPacket,0);
                 }
             }
-            if(pickVal==1) cursor=new peashooter;
-            if(pickVal==2) cursor=new sunFlower;
-            if(pickVal==3) cursor=new wallnut;
-            if(pickVal==4) cursor=new cherryBomb;
-            if(pickVal==5) cursor=new potatoMine;
-            if(pickVal==6) cursor=new repeater;
-            if(pickVal==7) cursor=new shovel;
+            if(pickVal==0) cursor=new peashooter;
+            if(pickVal==1) cursor=new sunFlower;
+            if(pickVal==2) cursor=new wallnut;
+            if(pickVal==3) cursor=new cherryBomb;
+            if(pickVal==4) cursor=new potatoMine;
+            if(pickVal==5) cursor=new repeater;
+            if(pickVal==6) cursor=new shovel;
         }
         else
         {
@@ -103,7 +103,7 @@ void shop::event(SDL_Event e)
                     }
                 }
             }
-            pickVal=0;
+            pickVal=-1;
             SDL_ShowCursor(SDL_ENABLE);
         }
     }
@@ -147,22 +147,23 @@ void shop::render()
         if(i!=6) renderText(p[i]->getPrice(),i+1);
     }
     for(auto &tmp:s) tmp->render();
-    if(pickVal)
+    if(pickVal!=-1)
     {
         SDL_GetMouseState(&mousePosX,&mousePosY);
         cursor->setPos(mousePosX-TILE_WIDTH/3,mousePosY-TILE_HEIGHT/2);
         cursor->render();
+        cursor->preRender(pickVal);
     }
 }
 void shop::placePlant(int column,int row,int val)
 {
-    if(pickVal>=1&&pickVal<=6)
+    if(pickVal>=0&&pickVal<=5)
     {
         if(board::exist[column][row]) return;
         totalSun-=cursor->getPrice();
         cursor->spawn(column,row);
         board::p[row].push_back(cursor);
-        p[pickVal-1]->setPlantTime(SDL_GetTicks());
+        p[pickVal]->setPlantTime(SDL_GetTicks());
         Mix_PlayChannel(-1,mPlant,0);
     }
     else

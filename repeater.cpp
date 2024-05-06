@@ -9,8 +9,6 @@ repeater::repeater()
     tmpFireSpeed[0]=1425;
     tmpFireSpeed[1]=200;
     type=0;
-    pos.w=100;
-    pos.h=120;
     recharge=7500;
 }
 void repeater::render()
