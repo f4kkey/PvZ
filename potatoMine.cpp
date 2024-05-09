@@ -5,7 +5,7 @@ potatoMine::potatoMine()
     price=25;
     live=1;
     health=300;
-    fireInterval=15000;
+    fireInterval=5000;
     damage=1300;
     sprite.x=0;
     sprite.y=40;
@@ -17,11 +17,8 @@ potatoMine::potatoMine()
 }
 void potatoMine::render()
 {
-    if(SDL_GetTicks()-preFireTime>=fireInterval&&sprite.h<100) sprite.h+=v,sprite.y+=v;
-    SDL_RenderCopy(ren,tPlant[4],&sprite,&pos);
-    if(!column)
+    if(column==-1)
     {
-
         if(SDL_GetTicks()-prePlantTime<recharge)
         {
             rechargeRect=pos;
@@ -29,6 +26,11 @@ void potatoMine::render()
             SDL_RenderCopy(ren,tBlank,NULL,&rechargeRect);
         }
     }
+    else
+    {
+        if(SDL_GetTicks()-preFireTime>=fireInterval&&sprite.h<100) sprite.h+=v,sprite.y+=v;
+    }
+    SDL_RenderCopy(ren,tPlant[4],&sprite,&pos);
 }
 void potatoMine::move()
 {

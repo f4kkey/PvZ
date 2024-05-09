@@ -13,7 +13,7 @@ sunFlower::sunFlower()
 void sunFlower::render()
 {
     SDL_RenderCopy(ren,tPlant[1],NULL,&pos);
-    if(!column)
+    if(column==-1)
     {
         if(SDL_GetTicks()-prePlantTime<recharge)
         {
@@ -31,6 +31,7 @@ void sunFlower::move()
         s->spawn(pos.x-30,pos.y,50);
         s->setEndPos(pos.y+50);
         shop::s.push_back(s);
+        preFireTime=SDL_GetTicks();
     }
 }
 void sunFlower::spawn(int i,int j)
