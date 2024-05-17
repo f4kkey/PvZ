@@ -140,7 +140,7 @@ void board::update()
         for(int i=0;i<z[row].size();i++)
         {
             zombie *tmp=z[row][i];
-            if(tmp->disapear())
+            if(tmp->disappear())
             {
                 z[row].erase(z[row].begin()+i);
                 i--;

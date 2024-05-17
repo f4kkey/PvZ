@@ -116,7 +116,7 @@ void zombie::biting(bool mask)
 {
     isBiting=mask;
 }
-bool zombie::disapear()
+bool zombie::disappear()
 {
     return 1-exist;
 }

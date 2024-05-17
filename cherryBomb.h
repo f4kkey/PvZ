@@ -7,7 +7,8 @@ class cherryBomb:public plant
         cherryBomb();
         void render();
         void move();
-        void spawn(int i,int j);
     private:
         SDL_Rect radius;
+        int explodeTime;
+        SDL_Rect sprite[2];
 };

@@ -8,7 +8,7 @@ class peashooter:public plant
         peashooter();
         void render();
         void move();
-        void spawn(int i,int j);
+
     private:
         pea *bullet;
 };

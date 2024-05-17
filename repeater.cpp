@@ -44,8 +44,3 @@ void repeater::move()
         }
     }
 }
-void repeater::spawn(int i,int j)
-{
-    plant::spawn(i,j);
-    preFireTime=SDL_GetTicks();
-}

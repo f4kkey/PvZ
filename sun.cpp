@@ -1,4 +1,5 @@
 #include "sun.h"
+#include "shop.h"
 sun::sun()
 {
     value=25;
@@ -26,7 +27,6 @@ void sun::spawn(int x,int y,int range)
         pos.x=x+(rand()%range);
         pos.y=y;
     }
-
     endPos=(rand()*123)%(SCREEN_HEIGHT-200)+100;
 }
 void sun::render()

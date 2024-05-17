@@ -4,7 +4,6 @@ plant::plant()
 {
     pos.w=PLANT_WIDTH;
     pos.h=PLANT_HEIGHT;
-    prePlantTime=-60000;
     column=-1;
 }
 void plant::render()
@@ -44,8 +43,7 @@ void plant::spawn(int i,int j)
     pos.x=board::pos[i][j].x+20;
     pos.y=board::pos[i][j].y-20;
     board::exist[i][j]=1;
-    sprite.x=0;
-    sprite.y=0;
+    preFireTime=SDL_GetTicks();
 }
 void plant::setPlantTime(int x)
 {

@@ -29,7 +29,6 @@ class plant
         int price;
         int recharge;
         int damage;
-        SDL_Rect sprite;
         SDL_Rect rechargeRect;
 
 

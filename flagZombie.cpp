@@ -1,4 +1,4 @@
-#include "bucketZombie.h"
+#include "flagZombie.h"
 #include "board.h"
 flagZombie::flagZombie()
 {

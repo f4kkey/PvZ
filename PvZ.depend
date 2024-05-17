@@ -442,7 +442,7 @@
 	"pea.h"
 	"plant.h"
 
-1715239470 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
+1715960355 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.cpp
 	"board.h"
 
 1714885138 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\board.h
@@ -457,11 +457,11 @@
 	"bucketZombie.h"
 	"flagZombie.h"
 
-1714957585 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
+1715959778 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.cpp
 	"zombie.h"
 	"board.h"
 
-1714957550 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.h
+1715959784 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\zombie.h
 	"all.h"
 
 1714202704 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\pea.cpp
@@ -473,7 +473,7 @@
 
 1712108520 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\mouse.cpp
 
-1715240000 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
+1715959623 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\shop.cpp
 	"shop.h"
 	"board.h"
 
@@ -492,13 +492,14 @@
 1712321949 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.h
 	"all.h"
 
-1714458576 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
+1715240952 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\sun.cpp
 	"sun.h"
+	"shop.h"
 
-1714958224 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.h
+1715960732 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.h
 	"all.h"
 
-1715240069 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.cpp
+1715960757 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\plant.cpp
 	"plant.h"
 	"board.h"
 
@@ -538,20 +539,20 @@
 	"wallnut.h"
 	"board.h"
 
-1713879424 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\cherrybomb.h
+1715960455 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\cherrybomb.h
 	"all.h"
 	"plant.h"
 
-1715239971 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\cherrybomb.cpp
+1715960702 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\cherrybomb.cpp
 	"cherryBomb.h"
 	"board.h"
 
-1713879437 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\potatomine.h
+1715960744 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\potatomine.h
 	"all.h"
 	"plant.h"
 
-1715239962 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\potatomine.cpp
-	"cherryBomb.h"
+1715960837 source:c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\potatomine.cpp
+	"potatoMine.h"
 	"board.h"
 
 1714958312 c:\users\dell\documents\mynightmare\universitystuff\coding\game\pvz\repeater.h

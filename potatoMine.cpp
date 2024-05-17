@@ -1,4 +1,4 @@
-#include "cherryBomb.h"
+#include "potatoMine.h"
 #include "board.h"
 potatoMine::potatoMine()
 {
@@ -68,9 +68,4 @@ void potatoMine::move()
             }
         }
     }
-}
-void potatoMine::spawn(int i,int j)
-{
-    plant::spawn(i,j);
-    preFireTime=SDL_GetTicks();
 }

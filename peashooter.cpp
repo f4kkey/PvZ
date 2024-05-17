@@ -40,8 +40,3 @@ void peashooter::move()
         }
     }
 }
-void peashooter::spawn(int i,int j)
-{
-    plant::spawn(i,j);
-    preFireTime=SDL_GetTicks();
-}

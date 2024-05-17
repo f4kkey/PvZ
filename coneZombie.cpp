@@ -1,4 +1,4 @@
-#include "basicZombie.h"
+#include "coneZombie.h"
 #include "board.h"
 coneZombie::coneZombie()
 {
