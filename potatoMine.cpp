@@ -5,7 +5,7 @@ potatoMine::potatoMine()
     price=25;
     live=1;
     health=300;
-    fireInterval=5000;
+    fireInterval=14000;
     damage=1300;
     sprite.x=0;
     sprite.y=40;
@@ -69,4 +69,9 @@ void potatoMine::move()
             }
         }
     }
+}
+void potatoMine::spawn(int i,int j)
+{
+    plant::spawn(i,j);
+    sprite.y=0;
 }
