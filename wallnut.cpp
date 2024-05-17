@@ -13,6 +13,7 @@ wallnut::wallnut()
         sprite[i].h=120;
     }
     recharge=30000;
+    value=2;
 }
 void wallnut::render()
 {
@@ -33,11 +34,10 @@ void wallnut::move()
 {
 
 }
-void wallnut::preRender(int val)
+void wallnut::preRender()
 {
     int x,y;
     SDL_GetMouseState(&x,&y);
-    if(val>=0&&val<=5)
     for(int i=0;i<9;i++)
     {
         for(int j=0;j<5;j++)
@@ -49,7 +49,7 @@ void wallnut::preRender(int val)
                 tmp.y-=20;
                 tmp.w=PLANT_WIDTH;
                 tmp.h=PLANT_HEIGHT;
-                SDL_RenderCopy(ren,tPlant2[val],&sprite[0],&tmp);
+                SDL_RenderCopy(ren,tPlant2[value],&sprite[0],&tmp);
             }
         }
     }

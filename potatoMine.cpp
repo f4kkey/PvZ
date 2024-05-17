@@ -14,6 +14,7 @@ potatoMine::potatoMine()
     v=2;
     recharge=30000;
     preFireTime=0;
+    value=4;
 }
 void potatoMine::render()
 {

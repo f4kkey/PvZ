@@ -7,7 +7,7 @@ class plant
         virtual void render();
         virtual void move();
         virtual void spawn(int i,int j);
-        virtual void preRender(int val);
+        virtual void preRender();
         SDL_Rect getPos();
         void takeDamage(int damageTaken);
         bool alive();
@@ -29,6 +29,7 @@ class plant
         int price;
         int recharge;
         int damage;
+        int value;
         SDL_Rect rechargeRect;
 
 

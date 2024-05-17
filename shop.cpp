@@ -152,7 +152,7 @@ void shop::render()
         SDL_GetMouseState(&mousePosX,&mousePosY);
         cursor->setPos(mousePosX-TILE_WIDTH/3,mousePosY-TILE_HEIGHT/2);
         cursor->render();
-        cursor->preRender(pickVal);
+        if(pickVal!=6) cursor->preRender();
     }
 }
 void shop::placePlant(int column,int row,int val)

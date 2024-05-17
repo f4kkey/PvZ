@@ -7,6 +7,7 @@ peashooter::peashooter()
     health=300;
     fireInterval=1425;
     recharge=7500;
+    value=0;
 }
 void peashooter::render()
 {

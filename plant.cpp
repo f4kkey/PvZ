@@ -5,6 +5,7 @@ plant::plant()
     pos.w=PLANT_WIDTH;
     pos.h=PLANT_HEIGHT;
     column=-1;
+    prePlantTime=-60000; //plant from the cursor are ready
 }
 void plant::render()
 {
@@ -14,11 +15,10 @@ void plant::move()
 {
 
 }
-void plant::preRender(int val)
+void plant::preRender()
 {
     int x,y;
     SDL_GetMouseState(&x,&y);
-    if(val>=0&&val<=5)
     for(int i=0;i<9;i++)
     {
         for(int j=0;j<5;j++)
@@ -30,7 +30,7 @@ void plant::preRender(int val)
                 tmp.y-=20;
                 tmp.w=PLANT_WIDTH;
                 tmp.h=PLANT_HEIGHT;
-                SDL_RenderCopy(ren,tPlant2[val],NULL,&tmp);
+                SDL_RenderCopy(ren,tPlant2[value],NULL,&tmp);
             }
         }
     }

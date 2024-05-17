@@ -10,6 +10,7 @@ repeater::repeater()
     tmpFireInterval[1]=200;
     type=0;
     recharge=7500;
+    value=5;
 }
 void repeater::render()
 {

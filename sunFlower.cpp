@@ -9,6 +9,7 @@ sunFlower::sunFlower()
     pos.w=100;
     pos.h=120;
     recharge=7500;
+    value=1;
 }
 void sunFlower::render()
 {
