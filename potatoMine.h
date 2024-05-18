@@ -9,7 +9,8 @@ class potatoMine:public plant
         void move();
         void spawn(int i,int j);
     private:
-        SDL_Rect sprite;
+        SDL_Rect sprite[2];
         SDL_Rect radius;
         int v;
+        int explosionTime;
 };

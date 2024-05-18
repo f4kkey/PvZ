@@ -31,6 +31,7 @@ void zombie::move()
         for(int j=0;j<board::p[row].size();j++)
         {
             plant *tmp=board::p[row][j];
+            if(!tmp->alive()) continue;
             if(collision(pos,tmp->getPos()))
             {
                 isBiting=1;

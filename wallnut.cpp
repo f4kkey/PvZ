@@ -7,7 +7,7 @@ wallnut::wallnut()
     health=4000;
     for(int i=0;i<3;i++)
     {
-        sprite[i].x=100*i-1;
+        sprite[i].x=100*i;
         sprite[i].y=0;
         sprite[i].w=100;
         sprite[i].h=120;

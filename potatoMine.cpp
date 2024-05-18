@@ -7,14 +7,20 @@ potatoMine::potatoMine()
     health=300;
     fireInterval=14000;
     damage=1300;
-    sprite.x=0;
-    sprite.y=40;
-    sprite.w=100;
-    sprite.h=80;
+    sprite[0].x=0;
+    sprite[0].y=40;
+    sprite[0].w=100;
+    sprite[0].h=80;
+
+    sprite[1].x=100;
+    sprite[1].y=0;
+    sprite[1].w=100;
+    sprite[1].h=120;
     v=2;
     recharge=30000;
     preFireTime=0;
     value=4;
+    explosionTime=-1;
 }
 void potatoMine::render()
 {
@@ -29,43 +35,50 @@ void potatoMine::render()
     }
     else
     {
-        if(SDL_GetTicks()-preFireTime>=fireInterval&&sprite.h<100) sprite.h+=v,sprite.y+=v;
+        if(SDL_GetTicks()-preFireTime>=fireInterval&&sprite[0].h<100) sprite[0].h+=v,sprite[0].y+=v;
     }
-    SDL_RenderCopy(ren,tPlant[4],&sprite,&pos);
+    if(live)SDL_RenderCopy(ren,tPlant[4],&sprite[0],&pos);
+    else SDL_RenderCopy(ren,tPlant[4],&sprite[1],&radius);
 }
 void potatoMine::move()
 {
     if(SDL_GetTicks()-preFireTime>=fireInterval)
     {
-        for(auto &tmp:board::z[row])
+        if(live)
         {
-            if(collision(pos,tmp->getPos()))
+            for(auto &tmp:board::z[row])
             {
-                live=0;
-                board::exist[column][row]=0;
-                Mix_PlayChannel(-1,mPotatoMine,0);
-                break;
+                if(collision(pos,tmp->getPos()))
+                {
+                    live=0;
+                    break;
+                }
             }
         }
-        if(!live)
+        else
         {
-            radius.x = board::pos[column][row].x-TILE_WIDTH/2;
-            radius.y = board::pos[column][row].y;
-            radius.w = TILE_WIDTH*2;
-            radius.h = TILE_HEIGHT;
-            for(int j=0;j<board::z[row].size();j++)
+            if(explosionTime==-1)
             {
-                zombie *tmp=board::z[row][j];
-                if(collision(radius,tmp->getPos()))
+                Mix_PlayChannel(-1,mPotatoMine,0);
+                for(int j=0;j<board::z[row].size();j++)
                 {
-                    tmp->takeDamage(damage);
-                    if(!tmp->alive())
+                    zombie *tmp=board::z[row][j];
+                    if(collision(radius,tmp->getPos()))
                     {
-                        delete tmp;
-                        board::z[row].erase(board::z[row].begin()+j);
-                        j--;
+                        tmp->takeDamage(damage);
+                        if(!tmp->alive())
+                        {
+                            delete tmp;
+                            board::z[row].erase(board::z[row].begin()+j);
+                            j--;
+                        }
                     }
                 }
+                explosionTime=SDL_GetTicks();
+            }
+            else if(SDL_GetTicks()-explosionTime>=1000)
+            {
+                    board::exist[column][row]=0;
             }
         }
     }
@@ -73,5 +86,9 @@ void potatoMine::move()
 void potatoMine::spawn(int i,int j)
 {
     plant::spawn(i,j);
-    sprite.y=0;
+    sprite[0].y=0;
+    radius.x = board::pos[column][row].x-TILE_WIDTH/2;
+    radius.y = board::pos[column][row].y;
+    radius.w = TILE_WIDTH*2;
+    radius.h = TILE_HEIGHT;
 }

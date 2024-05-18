@@ -11,7 +11,7 @@ cherryBomb::cherryBomb()
     explodeTime=-1;
     for(int i=0;i<2;i++)
     {
-        sprite[i].x=100*i-1;
+        sprite[i].x=100*i;
         sprite[i].y=0;
         sprite[i].w=100;
         sprite[i].h=120;
@@ -20,7 +20,7 @@ cherryBomb::cherryBomb()
 }
 void cherryBomb::render()
 {
-    if(explodeTime==-1)SDL_RenderCopy(ren,tPlant[3],&sprite[0],&pos);
+    if(live)SDL_RenderCopy(ren,tPlant[3],&sprite[0],&pos);
     else SDL_RenderCopy(ren,tPlant[3],&sprite[1],&radius);
     if(column==-1)
     {
@@ -41,8 +41,9 @@ void cherryBomb::move()
     radius.h = TILE_HEIGHT*3;
     if(SDL_GetTicks()-preFireTime>=fireInterval)
     {
-        if(explodeTime==-1)
+        if(live)
         {
+            live=0;
             Mix_PlayChannel(-1,mCherryBomb,0);
             for(int j=0;j<board::z[row].size();j++)
             {
@@ -90,13 +91,9 @@ void cherryBomb::move()
             }
             explodeTime=SDL_GetTicks();
         }
-        else
+        else if(SDL_GetTicks()-explodeTime>=1000)
         {
-            if(SDL_GetTicks()-explodeTime>=1000)
-            {
-                live=0;
                 board::exist[column][row]=0;
-            }
         }
     }
 }
