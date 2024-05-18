@@ -100,7 +100,7 @@ void potatoMine::preRender()
     {
         for(int j=0;j<5;j++)
         {
-            if(inside(x,y,board::pos[i][j]))
+            if(inside(x,y,board::pos[i][j])&&!board::exist[i][j])
             {
                 SDL_Rect tmp=board::pos[i][j];
                 tmp.x+=20;

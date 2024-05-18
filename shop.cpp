@@ -36,9 +36,9 @@ shop::shop()
 void shop::reset()
 {
     //20000
-    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-60000);
+    for(int i=0;i<6;i++) p[i]->setPlantTime(SDL_GetTicks()-20000);
     preSunSpawnTime=SDL_GetTicks()-5000;
-    totalSun=500;
+    totalSun=50;
     for(auto &tmp:s) delete tmp;
     s.clear();
 }

@@ -14,6 +14,7 @@ void game::init()
     ren=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
     TTF_Init();
     Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,8,2048);
+    Mix_AllocateChannels(14);
 }
 void game::loadResources()
 {
