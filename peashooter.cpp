@@ -26,6 +26,7 @@ void peashooter::move()
 {
     for(auto &tmp:board::z[row])
     {
+        if(!tmp->alive()) continue;
         SDL_Rect zomPos=tmp->getPos();
         if(pos.x+pos.w<=zomPos.x)
         {

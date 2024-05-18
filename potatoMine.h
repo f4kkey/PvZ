@@ -8,6 +8,7 @@ class potatoMine:public plant
         void render();
         void move();
         void spawn(int i,int j);
+        void preRender();
     private:
         SDL_Rect sprite[2];
         SDL_Rect radius;

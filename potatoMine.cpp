@@ -92,3 +92,23 @@ void potatoMine::spawn(int i,int j)
     radius.w = TILE_WIDTH*2;
     radius.h = TILE_HEIGHT;
 }
+void potatoMine::preRender()
+{
+    int x,y;
+    SDL_GetMouseState(&x,&y);
+    for(int i=0;i<9;i++)
+    {
+        for(int j=0;j<5;j++)
+        {
+            if(inside(x,y,board::pos[i][j]))
+            {
+                SDL_Rect tmp=board::pos[i][j];
+                tmp.x+=20;
+                tmp.y-=20;
+                tmp.w=PLANT_WIDTH;
+                tmp.h=PLANT_HEIGHT;
+                SDL_RenderCopy(ren,tPlant2[value],&sprite[0],&tmp);
+            }
+        }
+    }
+}
